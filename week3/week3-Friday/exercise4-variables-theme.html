@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>E4 - CSS Variables Theme</title>
+<style>
+  :root {
+    --primary: #15803d;
+    --accent:  #22c55e;
+    --bg:      #f0fdf4;
+    --text:    #1e293b;
+    --radius:  10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:   #052e16;
+      --text: #dcfce7;
+    }
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+  }
+  .btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: var(--accent); }
+  .card {
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-top: 16px;
+    color: var(--text);
+  }
+</style>
+</head>
+<body>
+  <button class="btn">Contact Rahimjon</button>
+  <div class="card">A themed card built entirely with CSS custom properties.</div>
+</body>
+</html>
