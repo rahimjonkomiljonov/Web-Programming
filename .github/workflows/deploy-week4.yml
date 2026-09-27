@@ -1,9 +1,13 @@
-name: Deploy Week 4 site
+name: Deploy Web Programming site
 
 on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
+      - 'site-nav.js'
+      - 'week2/**'
+      - 'week3/**'
       - 'week4/**'
       - '.github/workflows/deploy-week4.yml'
   workflow_dispatch:
@@ -28,10 +32,10 @@ jobs:
         uses: actions/checkout@v6
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload Week 4 site
+      - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:
-          path: week4
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

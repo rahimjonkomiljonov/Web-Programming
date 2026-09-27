@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef3f1">
+  <title>Web Programming | Rahimjon</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #eef3f1;
+      --surface: #fff;
+      --ink: #172b32;
+      --muted: #587078;
+      --line: #cbd9d7;
+      --green: #136f63;
+      --blue: #2859a8;
+      --coral: #c84f38;
+      --yellow: #f4d84b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Trebuchet MS", system-ui, sans-serif;
+    }
+    .masthead {
+      padding: 20px max(20px, calc((100vw - 1080px) / 2));
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    main { width: min(100% - 40px, 1080px); margin: 0 auto; }
+    .intro { padding: 42px 0 28px; }
+    .eyebrow { color: var(--green); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
+    h1 {
+      max-width: 760px;
+      margin: 10px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 500;
+      line-height: 0.98;
+    }
+    .intro p { max-width: 610px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
+    .course-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; }
+    .course-section { padding: 20px 0 24px; border-top: 1px solid var(--line); }
+    .course-section h2 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font-size: 1.15rem; }
+    .course-section h2 span { color: var(--muted); font: 0.75rem monospace; }
+    .course-section p { margin: -4px 0 12px; color: var(--muted); font-size: 0.88rem; }
+    .exercise-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
+    .exercise-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 42px;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      color: var(--ink);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .exercise-list a:hover { border-color: var(--line); background: var(--surface); }
+    .exercise-list a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+    .exercise-list a span { color: var(--green); font: 700 0.75rem monospace; }
+    .friday { grid-column: 1 / -1; }
+    .friday .exercise-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .week-four { border-top: 3px solid var(--yellow); }
+    @media (max-width: 680px) {
+      .course-list { grid-template-columns: 1fr; }
+      .friday { grid-column: auto; }
+      .friday .exercise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 390px) {
+      main { width: min(100% - 28px, 1080px); }
+      .exercise-list, .friday .exercise-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="masthead">GACHON UNIVERSITY <span aria-hidden="true">/</span> K0126002</div>
+  <main>
+    <header class="intro">
+      <span class="eyebrow">Course archive · Rahimjon</span>
+      <h1>Web Programming</h1>
+      <p>Exercises and projects from the course, organized by week. Choose a page to open it.</p>
+    </header>
+
+    <div class="course-list">
+      <section class="course-section">
+        <h2><span>W02</span> Week 2</h2>
+        <p>HTML and CSS exercises</p>
+        <ol class="exercise-list">
+          <li><a href="week2/ex1.html">Exercise 1 <span>01</span></a></li>
+          <li><a href="week2/ex2.html">Exercise 2 <span>02</span></a></li>
+          <li><a href="week2/ex3.html">Exercise 3 <span>03</span></a></li>
+          <li><a href="week2/ex4.html">Exercise 4 <span>04</span></a></li>
+          <li><a href="week2/ex5.html">Exercise 5 <span>05</span></a></li>
+          <li><a href="week2/ex6.html">Exercise 6 <span>06</span></a></li>
+          <li><a href="week2/ex7.html">Exercise 7 <span>07</span></a></li>
+          <li><a href="week2/ex8.html">Exercise 8 <span>08</span></a></li>
+        </ol>
+      </section>
+
+      <section class="course-section">
+        <h2><span>W03</span> Week 3</h2>
+        <p>CSS layout and styling exercises</p>
+        <ol class="exercise-list">
+          <li><a href="week3/ex1.html">Exercise 1 <span>01</span></a></li>
+          <li><a href="week3/ex2.html">Exercise 2 <span>02</span></a></li>
+          <li><a href="week3/ex3.html">Exercise 3 <span>03</span></a></li>
+          <li><a href="week3/ex4.html">Exercise 4 <span>04</span></a></li>
+          <li><a href="week3/ex5.html">Exercise 5 <span>05</span></a></li>
+          <li><a href="week3/ex6.html">Exercise 6 <span>06</span></a></li>
+          <li><a href="week3/ex7.html">Exercise 7 <span>07</span></a></li>
+          <li><a href="week3/ex8.html">Exercise 8 <span>08</span></a></li>
+        </ol>
+      </section>
+
+      <section class="course-section friday">
+        <h2><span>W03-FRI</span> Week 3 Friday</h2>
+        <p>Advanced CSS practice</p>
+        <ol class="exercise-list">
+          <li><a href="week3/week3-Friday/exercise1-badge.html">Badge <span>01</span></a></li>
+          <li><a href="week3/week3-Friday/exercise2-hover-card.html">Hover Card <span>02</span></a></li>
+          <li><a href="week3/week3-Friday/exercise3-spinner.html">Spinner <span>03</span></a></li>
+          <li><a href="week3/week3-Friday/exercise4-variables-theme.html">Variables Theme <span>04</span></a></li>
+          <li><a href="week3/week3-Friday/exercise5-fixed-nav.html">Fixed Navigation <span>05</span></a></li>
+          <li><a href="week3/week3-Friday/exercise6-responsive-grid.html">Responsive Grid <span>06</span></a></li>
+          <li><a href="week3/week3-Friday/exercise7-portfolio.html">Portfolio <span>07</span></a></li>
+        </ol>
+      </section>
+
+      <section class="course-section week-four">
+        <h2><span>W04</span> Week 4</h2>
+        <p>JavaScript DOM and events</p>
+        <ol class="exercise-list">
+          <li><a href="week4/index.html">Open Week 4 activity guide <span>GO</span></a></li>
+          <li><a href="week4/ex1.html">Click Counter <span>01</span></a></li>
+          <li><a href="week4/ex2.html">Dark Mode Card <span>02</span></a></li>
+          <li><a href="week4/ex3.html">To-Do List <span>03</span></a></li>
+          <li><a href="week4/ex4.html">Student Search <span>04</span></a></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+  <footer id="wp-site-footer">Created by Rahimjon | Student ID: 202438377</footer>
+  <script src="site-nav.js" defer></script>
+</body>
+</html>
