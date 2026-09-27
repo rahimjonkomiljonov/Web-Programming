@@ -45,39 +45,34 @@
       line-height: 0.98;
     }
     .intro p { max-width: 610px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
-    .course-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 42px; }
-    .course-section { padding: 20px 0 24px; border-top: 1px solid var(--line); }
-    .course-section h2 { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font-size: 1.15rem; }
-    .course-section h2 span { color: var(--muted); font: 0.75rem monospace; }
-    .course-section p { margin: -4px 0 12px; color: var(--muted); font-size: 0.88rem; }
-    .exercise-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 0; padding: 0; list-style: none; }
-    .exercise-list a {
+    .week-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .week-card {
+      min-height: 190px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      gap: 8px;
-      min-height: 42px;
-      padding: 8px 10px;
-      border: 1px solid transparent;
-      border-radius: 5px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--green);
+      border-radius: 7px;
+      background: var(--surface);
       color: var(--ink);
-      font-size: 0.9rem;
       text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
     }
-    .exercise-list a:hover { border-color: var(--line); background: var(--surface); }
-    .exercise-list a:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-    .exercise-list a span { color: var(--green); font: 700 0.75rem monospace; }
-    .friday { grid-column: 1 / -1; }
-    .friday .exercise-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .week-four { border-top: 3px solid var(--yellow); }
+    .week-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(23, 43, 50, .1); }
+    .week-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .week-card.week-four { border-top-color: var(--yellow); }
+    .week-number { color: var(--green); font: 700 0.8rem monospace; }
+    .week-card h2 { margin: 14px 0 6px; font-size: 1.35rem; }
+    .week-card p { margin: 0; color: var(--muted); font: 0.92rem/1.5 system-ui, sans-serif; }
+    .open-week { display: flex; justify-content: space-between; margin-top: 24px; color: var(--green); font-size: 0.9rem; font-weight: 700; }
     @media (max-width: 680px) {
-      .course-list { grid-template-columns: 1fr; }
-      .friday { grid-column: auto; }
-      .friday .exercise-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .week-grid { grid-template-columns: 1fr; }
+      .week-card { min-height: 160px; }
     }
     @media (max-width: 390px) {
       main { width: min(100% - 28px, 1080px); }
-      .exercise-list, .friday .exercise-list { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -87,66 +82,35 @@
     <header class="intro">
       <span class="eyebrow">Course archive · Rahimjon</span>
       <h1>Web Programming</h1>
-      <p>Exercises and projects from the course, organized by week. Choose a page to open it.</p>
+      <p>Select a week to browse its classwork and exercises.</p>
     </header>
 
-    <div class="course-list">
-      <section class="course-section">
-        <h2><span>W02</span> Week 2</h2>
-        <p>HTML and CSS exercises</p>
-        <ol class="exercise-list">
-          <li><a href="week2/ex1.html">Exercise 1 <span>01</span></a></li>
-          <li><a href="week2/ex2.html">Exercise 2 <span>02</span></a></li>
-          <li><a href="week2/ex3.html">Exercise 3 <span>03</span></a></li>
-          <li><a href="week2/ex4.html">Exercise 4 <span>04</span></a></li>
-          <li><a href="week2/ex5.html">Exercise 5 <span>05</span></a></li>
-          <li><a href="week2/ex6.html">Exercise 6 <span>06</span></a></li>
-          <li><a href="week2/ex7.html">Exercise 7 <span>07</span></a></li>
-          <li><a href="week2/ex8.html">Exercise 8 <span>08</span></a></li>
-        </ol>
-      </section>
-
-      <section class="course-section">
-        <h2><span>W03</span> Week 3</h2>
-        <p>CSS layout and styling exercises</p>
-        <ol class="exercise-list">
-          <li><a href="week3/ex1.html">Exercise 1 <span>01</span></a></li>
-          <li><a href="week3/ex2.html">Exercise 2 <span>02</span></a></li>
-          <li><a href="week3/ex3.html">Exercise 3 <span>03</span></a></li>
-          <li><a href="week3/ex4.html">Exercise 4 <span>04</span></a></li>
-          <li><a href="week3/ex5.html">Exercise 5 <span>05</span></a></li>
-          <li><a href="week3/ex6.html">Exercise 6 <span>06</span></a></li>
-          <li><a href="week3/ex7.html">Exercise 7 <span>07</span></a></li>
-          <li><a href="week3/ex8.html">Exercise 8 <span>08</span></a></li>
-        </ol>
-      </section>
-
-      <section class="course-section friday">
-        <h2><span>W03-FRI</span> Week 3 Friday</h2>
-        <p>Advanced CSS practice</p>
-        <ol class="exercise-list">
-          <li><a href="week3/week3-Friday/exercise1-badge.html">Badge <span>01</span></a></li>
-          <li><a href="week3/week3-Friday/exercise2-hover-card.html">Hover Card <span>02</span></a></li>
-          <li><a href="week3/week3-Friday/exercise3-spinner.html">Spinner <span>03</span></a></li>
-          <li><a href="week3/week3-Friday/exercise4-variables-theme.html">Variables Theme <span>04</span></a></li>
-          <li><a href="week3/week3-Friday/exercise5-fixed-nav.html">Fixed Navigation <span>05</span></a></li>
-          <li><a href="week3/week3-Friday/exercise6-responsive-grid.html">Responsive Grid <span>06</span></a></li>
-          <li><a href="week3/week3-Friday/exercise7-portfolio.html">Portfolio <span>07</span></a></li>
-        </ol>
-      </section>
-
-      <section class="course-section week-four">
-        <h2><span>W04</span> Week 4</h2>
-        <p>JavaScript DOM and events</p>
-        <ol class="exercise-list">
-          <li><a href="week4/index.html">Open Week 4 activity guide <span>GO</span></a></li>
-          <li><a href="week4/ex1.html">Click Counter <span>01</span></a></li>
-          <li><a href="week4/ex2.html">Dark Mode Card <span>02</span></a></li>
-          <li><a href="week4/ex3.html">To-Do List <span>03</span></a></li>
-          <li><a href="week4/ex4.html">Student Search <span>04</span></a></li>
-        </ol>
-      </section>
-    </div>
+    <nav class="week-grid" aria-label="Course weeks">
+      <a class="week-card" href="week2/index.html">
+        <div>
+          <span class="week-number">W02</span>
+          <h2>Week 2</h2>
+          <p>HTML foundations and introductory web pages.</p>
+        </div>
+        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="week-card" href="week3/index.html">
+        <div>
+          <span class="week-number">W03</span>
+          <h2>Week 3</h2>
+          <p>CSS styling, layouts, and advanced Friday practice.</p>
+        </div>
+        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="week-card week-four" href="week4/index.html">
+        <div>
+          <span class="week-number">W04</span>
+          <h2>Week 4</h2>
+          <p>JavaScript DOM and events.</p>
+        </div>
+        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+      </a>
+    </nav>
   </main>
   <footer id="wp-site-footer">Created by Rahimjon | Student ID: 202438377</footer>
   <script src="site-nav.js" defer></script>
