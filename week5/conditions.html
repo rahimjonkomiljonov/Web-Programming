@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef3f1">
+  <title>Conditions | Week 5</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px 20px 96px; background: #eef3f1; color: #172b32; font-family: "Trebuchet MS", system-ui, sans-serif; }
+    main { width: min(100%, 520px); padding: 28px; border: 1px solid #cbd9d7; border-top: 5px solid #136f63; border-radius: 7px; background: #fff; }
+    .eyebrow { color: #136f63; font: 700 0.8rem monospace; }
+    h1 { margin: 12px 0 8px; font: 500 2.2rem/1.05 Georgia, "Times New Roman", serif; }
+    p { color: #587078; line-height: 1.55; }
+    label { display: block; margin: 22px 0 7px; font-weight: 700; }
+    input, button { min-height: 46px; font: inherit; }
+    input { width: 100%; padding: 10px 12px; border: 1px solid #9db4b1; border-radius: 5px; color: inherit; }
+    button { margin-top: 12px; padding: 0 18px; border: 0; border-radius: 5px; background: #136f63; color: #fff; font-weight: 700; cursor: pointer; }
+    button:hover { background: #0e574e; }
+    input:focus-visible, button:focus-visible { outline: 3px solid #2859a8; outline-offset: 2px; }
+    #result { min-height: 1.6em; margin: 18px 0 0; color: #172b32; font-size: 1.1rem; font-weight: 700; }
+    @media (max-width: 420px) { main { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">WEEK 05 · CONDITIONS</span>
+    <h1>What grade did you get?</h1>
+    <p>Enter a score from 0 to 100. The result is chosen with an if / else if / else chain.</p>
+    <form id="grade-form">
+      <label for="score">Score</label>
+      <input id="score" name="score" type="number" min="0" max="100" step="1" placeholder="e.g. 85" required>
+      <button type="submit">Check grade</button>
+    </form>
+    <p id="result" aria-live="polite"></p>
+  </main>
+  <script>
+    const gradeForm = document.querySelector('#grade-form');
+    const scoreInput = document.querySelector('#score');
+    const result = document.querySelector('#result');
+
+    gradeForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const score = Number(scoreInput.value);
+
+      if (score >= 90) {
+        result.textContent = 'Grade A';
+      } else if (score >= 80) {
+        result.textContent = 'Grade B';
+      } else if (score >= 70) {
+        result.textContent = 'Grade C';
+      } else {
+        result.textContent = 'Grade F';
+      }
+    });
+  </script>
+  <script src="../site-nav.js" defer></script>
+</body>
+</html>
