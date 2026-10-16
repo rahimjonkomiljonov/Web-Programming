@@ -10,7 +10,7 @@
   <main>
     <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 06</span>
     <h1>Country Table</h1>
-    <p class="intro">Search countries by name and show flag, capital and population.<br><span class="api">restcountries.com/v3.1/name/korea</span></p>
+    <p class="intro">Search countries by name and show flag, capital and population.<br><span class="api">countries.dev/name/korea</span></p>
     <form class="controls" id="form">
       <input id="q" value="korea" aria-label="Country name" required>
       <button type="submit">Search</button>
@@ -37,7 +37,7 @@
       status.textContent = 'Loading...';
       table.hidden = true;
       try {
-        const res = await fetch('https://restcountries.com/v3.1/name/' + encodeURIComponent(q) + '?fields=name,flags,capital,population');
+        const res = await fetch('https://countries.dev/name/' + encodeURIComponent(q));
         if (res.status === 404) {
           status.className = 'status error';
           status.textContent = 'No countries match "' + q + '".';
@@ -51,10 +51,10 @@
           const flagTd = document.createElement('td');
           const img = document.createElement('img');
           img.src = c.flags.png;
-          img.alt = c.flags.alt || 'Flag of ' + c.name.common;
+          img.alt = 'Flag of ' + c.name;
           img.width = 48;
           flagTd.append(img);
-          const cells = [c.name.common, (c.capital && c.capital.length ? c.capital : ['—']).join(', '), c.population.toLocaleString()].map((t) => {
+          const cells = [c.name, c.capital || '—', c.population.toLocaleString()].map((t) => {
             const td = document.createElement('td');
             td.textContent = t;
             return td;
