@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Country Table | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 06</span>
+    <h1>Country Table</h1>
+    <p class="intro">Search countries by name and show flag, capital and population.<br><span class="api">restcountries.com/v3.1/name/korea</span></p>
+    <form class="controls" id="form">
+      <input id="q" value="korea" aria-label="Country name" required>
+      <button type="submit">Search</button>
+    </form>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div style="overflow-x:auto">
+      <table id="table" hidden>
+        <thead><tr><th>Flag</th><th>Name</th><th>Capital</th><th>Population</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const status = document.getElementById('status');
+    const table = document.getElementById('table');
+    const rows = document.getElementById('rows');
+
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const q = document.getElementById('q').value.trim();
+      if (!q) return;
+      status.className = 'status';
+      status.textContent = 'Loading...';
+      table.hidden = true;
+      try {
+        const res = await fetch('https://restcountries.com/v3.1/name/' + encodeURIComponent(q) + '?fields=name,flags,capital,population');
+        if (res.status === 404) {
+          status.className = 'status error';
+          status.textContent = 'No countries match "' + q + '".';
+          return;
+        }
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        rows.replaceChildren();
+        data.forEach((c) => {
+          const tr = document.createElement('tr');
+          const flagTd = document.createElement('td');
+          const img = document.createElement('img');
+          img.src = c.flags.png;
+          img.alt = c.flags.alt || 'Flag of ' + c.name.common;
+          img.width = 48;
+          flagTd.append(img);
+          const cells = [c.name.common, (c.capital && c.capital.length ? c.capital : ['—']).join(', '), c.population.toLocaleString()].map((t) => {
+            const td = document.createElement('td');
+            td.textContent = t;
+            return td;
+          });
+          tr.append(flagTd, ...cells);
+          rows.append(tr);
+        });
+        table.hidden = false;
+        status.textContent = data.length + ' result(s).';
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Something went wrong. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

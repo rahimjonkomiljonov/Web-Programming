@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Finder | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 05</span>
+    <h1>Pokémon Finder</h1>
+    <p class="intro">Search the PokéAPI for sprites, types and stats.<br><span class="api">pokeapi.co/api/v2/pokemon/pikachu</span></p>
+    <form class="controls" id="form">
+      <input id="name" value="pikachu" aria-label="Pokémon name or number" required>
+      <button type="submit">Search</button>
+    </form>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="card" id="out" hidden>
+      <img id="sprite" alt="" width="120" height="120">
+      <h2 id="pname"></h2>
+      <p id="types" class="muted"></p>
+      <table><tbody id="stats"></tbody></table>
+    </div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const status = document.getElementById('status');
+    const out = document.getElementById('out');
+
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim().toLowerCase();
+      if (!name) return;
+      status.className = 'status';
+      status.textContent = 'Loading...';
+      out.hidden = true;
+      try {
+        const res = await fetch('https://pokeapi.co/api/v2/pokemon/' + encodeURIComponent(name));
+        if (res.status === 404) {
+          status.className = 'status error';
+          status.textContent = 'No Pokémon named "' + name + '" found.';
+          return;
+        }
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const p = await res.json();
+        const sprite = document.getElementById('sprite');
+        sprite.src = p.sprites.front_default;
+        sprite.alt = p.name;
+        document.getElementById('pname').textContent = '#' + p.id + ' ' + p.name;
+        document.getElementById('types').textContent = 'Types: ' + p.types.map((t) => t.type.name).join(', ');
+        const body = document.getElementById('stats');
+        body.replaceChildren();
+        p.stats.forEach((s) => {
+          const tr = document.createElement('tr');
+          const th = document.createElement('th');
+          th.textContent = s.stat.name;
+          const td = document.createElement('td');
+          td.textContent = s.base_stat;
+          tr.append(th, td);
+          body.append(tr);
+        });
+        out.hidden = false;
+        status.textContent = '';
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Something went wrong. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

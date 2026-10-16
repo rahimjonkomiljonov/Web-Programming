@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Posts | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 02</span>
+    <h1>Blog Posts</h1>
+    <p class="intro">Fetch fake blog posts and filter them by title.<br><span class="api">jsonplaceholder.typicode.com/posts</span></p>
+    <div class="controls">
+      <button id="load" type="button">Load posts</button>
+      <input id="filter" type="search" placeholder="Filter by title..." aria-label="Filter posts by title">
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="list" class="grid"></div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const status = document.getElementById('status');
+    const list = document.getElementById('list');
+    const filter = document.getElementById('filter');
+    let posts = [];
+
+    function render() {
+      const q = filter.value.trim().toLowerCase();
+      list.replaceChildren();
+      posts.filter((p) => p.title.toLowerCase().includes(q)).slice(0, 24).forEach((p) => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        const h = document.createElement('h3');
+        h.textContent = p.title;
+        const b = document.createElement('p');
+        b.className = 'muted';
+        b.textContent = p.body;
+        card.append(h, b);
+        list.append(card);
+      });
+    }
+
+    document.getElementById('load').addEventListener('click', async () => {
+      status.className = 'status';
+      status.textContent = 'Loading...';
+      try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        posts = await res.json();
+        status.textContent = posts.length + ' posts loaded (showing up to 24).';
+        render();
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Could not load posts. Check your connection.';
+      }
+    });
+    filter.addEventListener('input', render);
+  </script>
+</body>
+</html>

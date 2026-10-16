@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Joke Fetcher | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 01</span>
+    <h1>Random Joke Fetcher</h1>
+    <p class="intro">Click the button to fetch a joke with async/await.<br><span class="api">official-joke-api.appspot.com/random_joke</span></p>
+    <div class="controls">
+      <button id="load" type="button">Get a joke</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="card" id="joke" hidden>
+      <p id="setup"></p>
+      <p id="punchline" class="punch"></p>
+      <button id="favourite" class="secondary" type="button">☆ Save favourite</button>
+    </div>
+    <h2>Favourites</h2>
+    <ul id="favs"></ul>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const loadBtn = $('load'), status = $('status'), card = $('joke');
+    let current = null;
+
+    function getFavs() {
+      try { return JSON.parse(localStorage.getItem('favJokes')) || []; } catch { return []; }
+    }
+
+    function renderFavs() {
+      const list = $('favs');
+      list.replaceChildren();
+      const favs = getFavs();
+      if (!favs.length) {
+        const li = document.createElement('li');
+        li.className = 'muted';
+        li.textContent = 'None yet.';
+        list.append(li);
+        return;
+      }
+      favs.forEach((j) => {
+        const li = document.createElement('li');
+        li.textContent = j.setup + ' — ' + j.punchline;
+        list.append(li);
+      });
+    }
+
+    async function loadJoke() {
+      loadBtn.disabled = true;
+      card.hidden = true;
+      status.className = 'status';
+      const spinner = document.createElement('span');
+      spinner.className = 'spinner';
+      status.replaceChildren(spinner, 'Loading...');
+      try {
+        const res = await fetch('https://official-joke-api.appspot.com/random_joke');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        current = await res.json();
+        $('setup').textContent = current.setup;
+        $('punchline').textContent = current.punchline;
+        $('favourite').textContent = '☆ Save favourite';
+        card.hidden = false;
+        status.textContent = '';
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Oops! Could not fetch a joke. Please try again.';
+      } finally {
+        loadBtn.disabled = false;
+      }
+    }
+
+    loadBtn.addEventListener('click', loadJoke);
+    $('favourite').addEventListener('click', () => {
+      if (!current) return;
+      const favs = getFavs();
+      if (!favs.some((j) => j.id === current.id)) {
+        favs.push(current);
+        try { localStorage.setItem('favJokes', JSON.stringify(favs)); } catch {}
+      }
+      $('favourite').textContent = '★ Saved';
+      renderFavs();
+    });
+    renderFavs();
+  </script>
+</body>
+</html>

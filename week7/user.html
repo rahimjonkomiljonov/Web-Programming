@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random User Profile | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 04</span>
+    <h1>Random User Profile</h1>
+    <p class="intro">Generate a fake profile with photo, name and email.<br><span class="api">randomuser.me/api</span></p>
+    <div class="controls">
+      <button id="load" type="button">New profile</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="card" id="out" hidden>
+      <img id="photo" alt="" width="128" height="128" style="border-radius:50%">
+      <h2 id="name"></h2>
+      <p id="email" class="muted"></p>
+      <p id="where" class="muted"></p>
+    </div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const status = document.getElementById('status');
+    const out = document.getElementById('out');
+
+    async function loadUser() {
+      status.className = 'status';
+      status.textContent = 'Loading...';
+      out.hidden = true;
+      try {
+        const res = await fetch('https://randomuser.me/api/');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const u = (await res.json()).results[0];
+        const photo = document.getElementById('photo');
+        photo.src = u.picture.large;
+        photo.alt = 'Photo of ' + u.name.first + ' ' + u.name.last;
+        document.getElementById('name').textContent = u.name.title + ' ' + u.name.first + ' ' + u.name.last;
+        document.getElementById('email').textContent = u.email;
+        document.getElementById('where').textContent = u.location.city + ', ' + u.location.country;
+        out.hidden = false;
+        status.textContent = '';
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Could not load a profile. Please try again.';
+      }
+    }
+    document.getElementById('load').addEventListener('click', loadUser);
+    loadUser();
+  </script>
+</body>
+</html>

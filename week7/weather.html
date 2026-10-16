@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seoul Weather | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 03</span>
+    <h1>Seoul Weather</h1>
+    <p class="intro">Real weather from Open-Meteo, no API key needed.<br><span class="api">api.open-meteo.com/v1/forecast?latitude=37.5&amp;longitude=127&amp;current_weather=true</span></p>
+    <div class="controls">
+      <button id="load" type="button">Get weather</button>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div class="card" id="out" hidden>
+      <h2 id="temp"></h2>
+      <p id="desc"></p>
+      <p class="muted" id="wind"></p>
+      <p class="muted" id="time"></p>
+    </div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const status = document.getElementById('status');
+    const out = document.getElementById('out');
+    const codes = { 0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast', 45: 'Fog', 48: 'Rime fog', 51: 'Light drizzle', 53: 'Drizzle', 55: 'Heavy drizzle', 61: 'Light rain', 63: 'Rain', 65: 'Heavy rain', 71: 'Light snow', 73: 'Snow', 75: 'Heavy snow', 80: 'Rain showers', 95: 'Thunderstorm' };
+
+    async function loadWeather() {
+      status.className = 'status';
+      status.textContent = 'Loading...';
+      out.hidden = true;
+      try {
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=37.5&longitude=127&current_weather=true');
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const w = (await res.json()).current_weather;
+        document.getElementById('temp').textContent = w.temperature + ' °C';
+        document.getElementById('desc').textContent = codes[w.weathercode] || 'Weather code ' + w.weathercode;
+        document.getElementById('wind').textContent = 'Wind: ' + w.windspeed + ' km/h';
+        document.getElementById('time').textContent = 'Updated: ' + w.time.replace('T', ' ');
+        out.hidden = false;
+        status.textContent = '';
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Could not load the weather. Try again later.';
+      }
+    }
+    document.getElementById('load').addEventListener('click', loadWeather);
+  </script>
+</body>
+</html>
