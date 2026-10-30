@@ -70,6 +70,23 @@
     .open-week { display: flex; justify-content: space-between; margin-top: 24px; color: var(--green); font-size: 0.9rem; font-weight: 700; }
     .week-card.group-project .week-number,
     .week-card.group-project .open-week { color: var(--blue); }
+    .instagram-follow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 18px;
+      margin: 28px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--blue);
+      border-radius: 7px;
+      background: var(--surface);
+    }
+    .instagram-follow img { display: block; width: 140px; height: 140px; }
+    .instagram-follow h2 { margin: 0 0 8px; font-size: 1.2rem; }
+    .instagram-follow p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .instagram-follow a { color: var(--blue); font-weight: 700; }
+    .instagram-follow a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
     @media (max-width: 680px) {
       .week-grid { grid-template-columns: 1fr; }
       .week-card { min-height: 160px; }
@@ -138,6 +155,17 @@
         <span class="open-week">Open project <span aria-hidden="true">→</span></span>
       </a>
     </nav>
+    <section class="instagram-follow" aria-labelledby="instagram-heading">
+      <a href="https://www.instagram.com/overlaps.app?mdxt=NHZzNXEyZTI0em8y" target="_blank" rel="noopener noreferrer">
+        <img src="group%20project/instagram-qr.svg" alt="QR code for the Overlap Instagram profile">
+      </a>
+      <div>
+        <h2 id="instagram-heading">Follow Overlap</h2>
+        <p>Scan the QR code or visit
+          <a href="https://www.instagram.com/overlaps.app?mdxt=NHZzNXEyZTI0em8y" target="_blank" rel="noopener noreferrer">@overlaps.app on Instagram</a>.
+        </p>
+      </div>
+    </section>
   </main>
   <footer id="wp-site-footer">Created by Rahimjon | Student ID: 202438377</footer>
   <script src="site-nav.js" defer></script>
