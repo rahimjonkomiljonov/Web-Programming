@@ -11,6 +11,8 @@
     li a { display: flex; justify-content: space-between; gap: 14px; padding: 15px 10px; color: #172b32; text-decoration: none; }
     li a:hover { background: #fff; }
     li span { color: #136f63; font: 700 0.8rem monospace; }
+    li.project-link a { background: #f4f8ff; }
+    li.project-link span { color: #2859a8; }
     @media (max-width: 480px) { ol { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -26,6 +28,7 @@
       <li><a href="user.html">Random User <span>04</span></a></li>
       <li><a href="pokemon.html">Pokémon Finder <span>05</span></a></li>
       <li><a href="countries.html">Country Table <span>06</span></a></li>
+      <li class="project-link" style="grid-column: 1 / -1;"><a href="../group%20project/index.html">Group Project: Overlap <span>GP</span></a></li>
     </ol>
   </main>
   <script src="../site-nav.js" defer></script>
