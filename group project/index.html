@@ -41,6 +41,9 @@
     ul { margin: 0; padding-left: 20px; color: var(--muted); }
     li { margin-bottom: 6px; }
     .note { margin-top: 28px; font-size: 0.88rem; }
+    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+    .qr { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 7px; background: #fff; color: var(--ink); text-align: center; text-decoration: none; font-size: 0.85rem; }
+    .qr img { display: block; background: #fff; }
     .follow { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding: 20px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 7px; background: var(--surface); }
     .follow img { width: 160px; height: 160px; }
     .follow p { margin: 0 0 8px; }
@@ -50,23 +53,21 @@
 <body>
   <main>
     <span class="eyebrow">K0126002 · Group project</span>
+    <div class="hero">
+    <div>
     <h1>Overlap</h1>
     <p class="lead">Meet the people you already share a campus with. A campus introduction app that matches students on what they share, never on looks.</p>
+    </div>
+    <a class="qr" href="https://www.instagram.com/overlaps.app" target="_blank" rel="noopener noreferrer">
+      <img src="instagram-qr.svg" alt="QR code linking to the Overlap Instagram profile, overlaps.app" width="180" height="180">
+      <span>Scan for Instagram<br><strong>@overlaps.app</strong></span>
+    </a>
+    </div>
     <div class="actions">
       <a class="btn" href="https://overlaps.tech/" target="_blank" rel="noopener noreferrer">Visit overlaps.tech</a>
       <a class="btn alt" href="https://www.instagram.com/overlaps.app" target="_blank" rel="noopener noreferrer">Instagram @overlaps.app</a>
       <a class="btn alt" href="Overlap-class-presentation.pptx" download>Download presentation (.pptx)</a>
       <a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/blob/main/group%20project/README.md" target="_blank" rel="noopener noreferrer">Read the README</a>
-    </div>
-
-    <h2>Follow Overlap</h2>
-    <div class="follow">
-      <img src="instagram-qr.svg" alt="QR code linking to the Overlap Instagram profile, overlaps.app" width="160" height="160">
-      <div>
-        <p><strong>@overlaps.app</strong> on Instagram</p>
-        <p>Scan the code with your phone camera, or use the button.</p>
-        <a class="btn" href="https://www.instagram.com/overlaps.app" target="_blank" rel="noopener noreferrer">Open Instagram</a>
-      </div>
     </div>
 
     <h2>Team</h2>
