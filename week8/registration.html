@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form | Week 8</title>
+  <link rel="stylesheet" href="../week7/style.css">
+  <style>
+    form { display: grid; gap: 18px; }
+    fieldset { margin: 0; padding: 18px 20px 20px; border: 1px solid #cbd9d7; border-radius: 8px; background: #fff; display: grid; gap: 4px; }
+    legend { padding: 0 8px; color: #136f63; font-weight: 700; }
+    label { margin-top: 10px; font-weight: 700; }
+    input { width: 100%; border-width: 2px; }
+    .hint { margin: 0; color: #587078; font-size: 0.85rem; }
+
+    /* States are driven by JS through aria-invalid */
+    input[aria-invalid="true"] { border-color: #d93025; background: #fdf3f2; }
+    input[aria-invalid="false"] { border-color: #27a844; background: #f3fbf5; }
+    input:focus { outline: 3px solid #f7df1e; outline-offset: 2px; }
+
+    .err { min-height: 1.2em; margin: 0; color: #b3261e; font-size: 0.85rem; font-weight: 700; }
+
+    button[type="submit"]:disabled { opacity: 0.45; cursor: not-allowed; background: #94a3b8; border-color: #94a3b8; }
+    button[type="submit"]:enabled { background: #136f63; }
+
+    .success { padding: 14px 16px; border: 1px solid #27a844; border-radius: 8px; background: #f3fbf5; color: #14602a; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 08 · HOMEWORK</span>
+    <h1>Student Registration</h1>
+    <p class="intro">JavaScript validation: <code>novalidate</code>, <code>preventDefault()</code>, real-time <code>input</code> events, ARIA, and password confirmation with <code>setCustomValidity()</code>.</p>
+
+    <form id="regForm" action="#" method="post" novalidate>
+      <fieldset>
+        <legend>Student Info</legend>
+
+        <label for="sname">Full Name</label>
+        <input type="text" id="sname" name="sname" required minlength="2" maxlength="50" autocomplete="name" aria-describedby="err-sname">
+        <span class="err" id="err-sname" role="alert"></span>
+
+        <label for="sid">Student ID</label>
+        <input type="text" id="sid" name="sid" required inputmode="numeric" aria-describedby="hint-sid err-sid">
+        <span class="hint" id="hint-sid">Exactly 9 digits</span>
+        <span class="err" id="err-sid" role="alert"></span>
+
+        <label for="semail">Gachon Email</label>
+        <input type="email" id="semail" name="semail" required autocomplete="email" aria-describedby="err-semail">
+        <span class="err" id="err-semail" role="alert"></span>
+      </fieldset>
+
+      <fieldset>
+        <legend>Account</legend>
+
+        <label for="pw">Password</label>
+        <input type="password" id="pw" name="pw" required minlength="8" autocomplete="new-password" aria-describedby="hint-pw err-pw">
+        <span class="hint" id="hint-pw">At least 8 characters</span>
+        <span class="err" id="err-pw" role="alert"></span>
+
+        <label for="pw2">Confirm Password</label>
+        <input type="password" id="pw2" name="pw2" required autocomplete="new-password" aria-describedby="err-pw2">
+        <span class="err" id="err-pw2" role="alert"></span>
+      </fieldset>
+
+      <div class="controls">
+        <button type="submit" id="submit-btn" disabled>Register</button>
+        <button type="reset" class="secondary">Clear</button>
+      </div>
+    </form>
+
+    <div id="success" class="success" role="status" hidden></div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const form = document.getElementById('regForm');
+    const submitBtn = document.getElementById('submit-btn');
+    const success = document.getElementById('success');
+    const $ = (id) => document.getElementById(id);
+
+    // 1. Reusable helpers
+    function markValid(input, span) {
+      input.setAttribute('aria-invalid', 'false');
+      span.textContent = '';
+    }
+    function markInvalid(input, span, msg) {
+      input.setAttribute('aria-invalid', 'true');
+      span.textContent = msg;
+    }
+
+    // 2. Per-field validators (each returns true/false)
+    function validateName() {
+      const el = $('sname'), err = $('err-sname');
+      if (el.validity.valueMissing) return markInvalid(el, err, 'Full name is required'), false;
+      if (el.validity.tooShort) return markInvalid(el, err, 'Name must be at least 2 characters'), false;
+      return markValid(el, err), true;
+    }
+
+    function validateSid() {
+      const el = $('sid'), err = $('err-sid');
+      if (el.validity.valueMissing) return markInvalid(el, err, 'Student ID is required'), false;
+      if (!/^\d{9}$/.test(el.value)) return markInvalid(el, err, 'Must be exactly 9 digits'), false;
+      return markValid(el, err), true;
+    }
+
+    function validateEmail() {
+      const el = $('semail'), err = $('err-semail');
+      if (el.validity.valueMissing) return markInvalid(el, err, 'Email is required'), false;
+      if (el.validity.typeMismatch) return markInvalid(el, err, 'Enter a valid email, like name@gachon.ac.kr'), false;
+      return markValid(el, err), true;
+    }
+
+    function validatePassword() {
+      const el = $('pw'), err = $('err-pw');
+      if (el.validity.valueMissing) return markInvalid(el, err, 'Password is required'), false;
+      if (el.validity.tooShort) return markInvalid(el, err, 'Password must be at least 8 characters'), false;
+      return markValid(el, err), true;
+    }
+
+    function validateConfirm() {
+      const el = $('pw2'), err = $('err-pw2');
+      // setCustomValidity bridges our comparison into the validity API,
+      // so form.checkValidity() also knows about the mismatch.
+      el.setCustomValidity(el.value !== $('pw').value ? 'Passwords do not match' : '');
+      if (el.validity.valueMissing) return markInvalid(el, err, 'Please confirm your password'), false;
+      if (el.validity.customError) return markInvalid(el, err, el.validationMessage), false;
+      return markValid(el, err), true;
+    }
+
+    const validators = { sname: validateName, sid: validateSid, semail: validateEmail, pw: validatePassword, pw2: validateConfirm };
+    const validateAll = () => Object.values(validators).map((v) => v()).every(Boolean);
+
+    // Keep the custom error in sync before reading form.checkValidity()
+    function updateButton() {
+      $('pw2').setCustomValidity($('pw2').value !== $('pw').value ? 'Passwords do not match' : '');
+      const sid = $('sid');
+      sid.setCustomValidity(/^\d{9}$/.test(sid.value) || sid.value === '' ? '' : 'Must be exactly 9 digits');
+      submitBtn.disabled = !form.checkValidity();
+    }
+
+    // 3. Real-time wiring
+    Object.entries(validators).forEach(([id, validate]) => {
+      $(id).addEventListener('input', () => {
+        validate();
+        // Changing the password must re-check the confirmation too
+        if (id === 'pw' && $('pw2').value) validateConfirm();
+        updateButton();
+      });
+    });
+
+    // 4. Final gate: never trust the disabled button alone (DevTools can enable it)
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      updateButton();
+      if (!validateAll()) {
+        success.hidden = true;
+        form.querySelector('[aria-invalid="true"]').focus();
+        return;
+      }
+      const name = $('sname').value.trim();
+      form.reset();
+      success.textContent = 'Welcome, ' + name + '! Your registration was successful (demo only, nothing leaves this page).';
+      success.hidden = false;
+    });
+
+    form.addEventListener('reset', () => {
+      success.hidden = true;
+      form.querySelectorAll('input').forEach((el) => { el.removeAttribute('aria-invalid'); el.setCustomValidity(''); });
+      form.querySelectorAll('.err').forEach((s) => { s.textContent = ''; });
+      setTimeout(updateButton);
+    });
+
+    updateButton();
+  </script>
+</body>
+</html>
