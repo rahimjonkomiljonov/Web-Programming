@@ -48,10 +48,13 @@
     .follow img { width: 160px; height: 160px; }
     .follow p { margin: 0 0 8px; }
     @media (max-width: 480px) { main { width: min(100% - 28px, 920px); } }
+    .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
+    .skip-link:focus { left: 0.5rem; z-index: 9999; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font-weight: 700; }
   </style>
 </head>
 <body>
-  <main>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main id="main-content">
     <span class="eyebrow">K0126002 · Group project</span>
     <div class="hero">
     <div>

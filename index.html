@@ -94,11 +94,14 @@
     @media (max-width: 390px) {
       main { width: min(100% - 28px, 1080px); }
     }
+    .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
+    .skip-link:focus { left: 0.5rem; z-index: 9999; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font-weight: 700; }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="masthead">GACHON UNIVERSITY <span aria-hidden="true">/</span> K0126002</div>
-  <main>
+  <main id="main-content">
     <header class="intro">
       <span class="eyebrow">Course archive · Rahimjon</span>
       <h1>Web Programming</h1>
@@ -151,6 +154,14 @@
           <span class="week-number">W08</span>
           <h2>Week 8</h2>
           <p>HTML forms and JavaScript validation: contact and registration forms.</p>
+        </div>
+        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="week-card" href="week9/index.html">
+        <div>
+          <span class="week-number">W09</span>
+          <h2>Week 9</h2>
+          <p>Web accessibility: Lighthouse audit, fixes and skip links.</p>
         </div>
         <span class="open-week">Open week <span aria-hidden="true">→</span></span>
       </a>

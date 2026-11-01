@@ -2,6 +2,17 @@
   const script = document.currentScript;
   if (!script || !document.body) return;
 
+  // Skip link for pages that do not ship their own (WCAG 2.4.1)
+  const main = document.querySelector('main');
+  if (main && !document.querySelector('.skip-link')) {
+    if (!main.id) main.id = 'main-content';
+    const skip = document.createElement('a');
+    skip.className = 'skip-link';
+    skip.href = '#' + main.id;
+    skip.textContent = 'Skip to main content';
+    document.body.prepend(skip);
+  }
+
   const homeUrl = new URL('./index.html', script.src);
   const controls = document.createElement('nav');
   controls.id = 'wp-site-controls';
@@ -63,6 +74,8 @@
     }
     #wp-site-controls a { border-color: #136f63; background: #136f63; color: #fff; }
     #wp-site-controls a:focus-visible, #wp-site-controls button:focus-visible { outline: 3px solid #2859a8; outline-offset: 2px; }
+    .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
+    .skip-link:focus { left: 0.5rem; z-index: 2147483647; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font: 700 14px/1.2 system-ui, sans-serif; }
     #wp-site-footer {
       margin: 36px 20px 0;
       padding: 18px 0 24px;
