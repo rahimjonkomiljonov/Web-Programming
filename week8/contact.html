@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form | Week 8</title>
+  <link rel="stylesheet" href="../week7/style.css">
+  <style>
+    form { display: grid; gap: 18px; }
+    fieldset { margin: 0; padding: 18px 20px 20px; border: 1px solid #cbd9d7; border-radius: 8px; background: #fff; display: grid; gap: 6px; }
+    legend { padding: 0 8px; color: #136f63; font-weight: 700; }
+    label { margin-top: 10px; font-weight: 700; }
+    label .req { color: #b3261e; }
+    input, textarea { width: 100%; padding: 10px 12px; border: 2px solid #cbd9d7; border-radius: 6px; background: #fff; color: inherit; font: inherit; }
+    textarea { min-height: 140px; resize: vertical; }
+    .hint { margin: 0; color: #587078; font-size: 0.85rem; }
+    .counter { text-align: right; }
+
+    /* Validation states: only after the user has typed something (placeholder gone) */
+    input:not(:placeholder-shown):valid,
+    textarea:not(:placeholder-shown):valid { border-color: #27a844; background: #f3fbf5; }
+    input:not(:placeholder-shown):invalid,
+    textarea:not(:placeholder-shown):invalid { border-color: #d93025; background: #fdf3f2; }
+    input:focus, textarea:focus { outline: 3px solid #f7df1e; outline-offset: 2px; }
+
+    /* Error message appears only while the field is invalid and non-empty */
+    .error { display: none; margin: 0; color: #b3261e; font-size: 0.85rem; font-weight: 700; }
+    input:not(:placeholder-shown):invalid ~ .error,
+    textarea:not(:placeholder-shown):invalid ~ .error { display: block; }
+
+    .success { padding: 14px 16px; border: 1px solid #27a844; border-radius: 8px; background: #f3fbf5; color: #14602a; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 08 · HOMEWORK</span>
+    <h1>Contact Form</h1>
+    <p class="intro">HTML5 validation (<code>required</code>, <code>minlength</code>, <code>maxlength</code>, <code>type="email"</code>, <code>pattern</code>) with <code>:valid</code> / <code>:invalid</code> styling.</p>
+
+    <form id="contact-form" action="#" method="POST" autocomplete="on">
+      <fieldset>
+        <legend>Your Details</legend>
+
+        <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Rahimjon Karimov" required minlength="2" maxlength="50" pattern="[A-Za-zÀ-ɏ' \-]{2,50}" title="Letters, spaces, apostrophes and hyphens only (2-50 characters)">
+        <p class="error">Enter your name (2-50 letters).</p>
+
+        <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <p class="error">Must be a valid email address, like you@example.com.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your Message</legend>
+
+        <label for="subject">Subject <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="subject" name="subject" placeholder="What is this about?" required minlength="5" maxlength="100">
+        <p class="error">Subject must be 5-100 characters.</p>
+
+        <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required minlength="20" maxlength="500"></textarea>
+        <p class="error">Message must be at least 20 characters.</p>
+        <p class="hint counter" id="counter" aria-live="polite">0 / 500</p>
+      </fieldset>
+
+      <div class="controls">
+        <button type="submit">Send</button>
+        <button type="reset" class="secondary">Clear</button>
+      </div>
+    </form>
+
+    <p id="result" class="success" role="status" hidden></p>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const form = document.getElementById('contact-form');
+    const message = document.getElementById('message');
+    const counter = document.getElementById('counter');
+    const result = document.getElementById('result');
+
+    function updateCounter() {
+      counter.textContent = message.value.length + ' / ' + message.maxLength;
+    }
+
+    message.addEventListener('input', updateCounter);
+    form.addEventListener('reset', () => { result.hidden = true; setTimeout(updateCounter); });
+
+    // The browser only fires "submit" once every constraint passes.
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = form.elements.name.value.trim();
+      form.reset();
+      result.textContent = 'Thanks, ' + name + '! Your message was sent (demo only, nothing leaves this page).';
+      result.hidden = false;
+    });
+  </script>
+</body>
+</html>
