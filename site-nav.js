@@ -47,6 +47,7 @@
   const styles = document.createElement('style');
   styles.textContent = `
     body { padding-bottom: max(82px, calc(env(safe-area-inset-bottom) + 72px)) !important; }
+    #wp-site-controls, #wp-site-controls * { box-sizing: border-box; }
     #wp-site-controls {
       position: fixed;
       z-index: 2147483647;

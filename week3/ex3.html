@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Colour Palette | Week 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/frame.css">
   <style>
     body {
-      font-family: sans-serif;
-      padding: 20px;
+      font-family: var(--font-body);
+      
     }
+    main { padding: 20px; }
     .palette {
       display: flex;
       gap: 12px;
@@ -36,6 +42,14 @@
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <a href="index.html">Week 3</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Colour Palette</span>
+    </div>
+  </header>
 <main>
   <div class="palette">
     <div class="swatch c1">#EF4444</div>

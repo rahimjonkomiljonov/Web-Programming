@@ -4,10 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Rahimjon - CSS Advanced Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/frame.css">
 <style>
   :root {
     --primary: #15803d; --accent: #22c55e;
-    --bg: #f0fdf4;       --text: #1e293b;
+    --bg: #f6f1e7;       --text: #1e293b;
     --radius: 12px;
   }
   @media (prefers-color-scheme: dark) {
@@ -15,8 +19,8 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  body { background: var(--bg); color: var(--text);
-         font-family: 'Segoe UI', sans-serif; }
+  body { background-color: var(--bg); color: var(--text);
+         font-family: var(--font-body); }
 
   /* Fixed nav */
   nav {

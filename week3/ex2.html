@@ -2,18 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Internal CSS | Week 3</title>
   <!-- Internal CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/frame.css">
   <style>
     body {
-      font-family: sans-serif;
+      font-family: var(--font-body);
     }
     h2 {
       color: #0369a1;
     }
+    main { padding: 24px 28px; }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <a href="index.html">Week 3</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Internal CSS</span>
+    </div>
+  </header>
 <main>
   <h2>Internal Style (change me to blue)</h2>
   <!-- Inline CSS -->

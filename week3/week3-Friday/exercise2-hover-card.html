@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>E2 - Hover Card with Transition</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/frame.css">
 <style>
   body {
-    font-family: 'Segoe UI', sans-serif;
-    padding: 40px;
-    background-color: #f0fdf4;
+    font-family: var(--font-body);
   }
+  main { padding: 40px; }
   .card {
     background-color: white;
     border: 2px solid #15803d;
@@ -27,6 +31,16 @@
 </style>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <a href="../index.html">Week 3</a>
+      <span aria-hidden="true">/</span>
+      <a href="index.html">Friday</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Hover Card</span>
+    </div>
+  </header>
 <main>
   <div class="card">Hover over me, I lift up!</div>
 </main>

@@ -5,51 +5,11 @@
    offset shadow.
    ========================================================================== */
 
-:root {
-  color-scheme: light;
-
-  /* colour */
-  --paper: #f6f1e7;
-  --surface: #fffdf8;
-  --ink: #1c1b19;
-  --muted: #5c564a;
-  --line: #ddd3bf;
-  --dots: #d6cbb3;
-  --accent: #b8400f;        /* vermilion: 4.9:1 on paper, 5.6:1 behind white text */
-  --accent-dark: #9a3412;
-  --marker: #f6d04d;        /* highlighter yellow */
-  --blue: #1d4e89;
-  --green: #1f7a4d;
-  --danger: #b3261e;
-
-  /* type */
-  --font-display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-  /* shape */
-  --radius: 10px;
-  --stroke: 1.5px solid var(--ink);
-  --sticker: 4px 4px 0 var(--ink);
-  --sticker-hover: 6px 6px 0 var(--ink);
-}
+@import url("frame.css");
 
 *, *::before, *::after { box-sizing: border-box; }
 
 /* ---------- base ---------- */
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  min-height: 100vh;
-  margin: 0;
-  padding-bottom: 96px; /* room for the floating Home/Back controls */
-  background-color: var(--paper);
-  background-image: radial-gradient(var(--dots) 1px, transparent 1px);
-  background-size: 22px 22px;
-  color: var(--ink);
-  font: 400 1rem/1.65 var(--font-body);
-}
-
 h1, h2, h3, h4 {
   margin: 0;
   color: var(--ink);
@@ -97,43 +57,6 @@ mark, .marker {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
-
-/* ---------- site header ---------- */
-.site-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 20px;
-  padding: 14px max(20px, calc((100% - var(--page-w, 820px)) / 2));
-  border-bottom: var(--stroke);
-  background: var(--surface);
-}
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink);
-  font: 700 1.05rem/1 var(--font-display);
-  letter-spacing: -0.01em;
-  text-decoration: none;
-}
-.brand:hover { color: var(--ink); }
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: var(--stroke);
-  border-radius: 8px;
-  background: var(--marker);
-  box-shadow: 2px 2px 0 var(--ink);
-  font: 600 0.75rem/1 var(--font-mono);
-  letter-spacing: -0.04em;
-}
-.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--muted); font: 500 0.82rem/1.2 var(--font-mono); }
-.crumbs a { color: var(--ink); text-decoration: none; padding: 6px 2px; }
-.crumbs a:hover { color: var(--accent-dark); text-decoration: underline; }
 
 /* ---------- page layout ---------- */
 .wrap { width: min(100% - 40px, var(--page-w, 820px)); margin: 0 auto; padding: 48px 0 24px; }

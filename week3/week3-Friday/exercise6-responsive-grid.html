@@ -4,18 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>E6 - Responsive Grid Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/frame.css">
 <style>
   :root {
     --primary: #15803d; --accent: #22c55e;
-    --bg: #f0fdf4;       --text: #1e293b;
+    --bg: #f6f1e7;       --text: #1e293b;
     --radius: 12px;
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #052e16; --text: #dcfce7; }
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text);
-         font-family: 'Segoe UI', sans-serif; padding: 24px; }
+  body { background-color: var(--bg); color: var(--text);
+         font-family: var(--font-body);  }
+  main { padding: 24px; }
   h1 { color: var(--primary); margin-bottom: 24px; }
 
   .grid {
@@ -50,6 +55,16 @@
 </style>
 </head>
 <body>
+  <header class="site-header">
+    <a class="brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <a href="../index.html">Week 3</a>
+      <span aria-hidden="true">/</span>
+      <a href="index.html">Friday</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Responsive Grid</span>
+    </div>
+  </header>
 <main>
   <h1>Rahimjon's CSS Toolkit</h1>
   <div class="grid">
