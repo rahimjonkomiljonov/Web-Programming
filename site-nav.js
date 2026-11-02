@@ -58,7 +58,7 @@
       border: 1.5px solid #1c1b19;
       border-radius: 999px;
       background: #1c1b19;
-      box-shadow: 3px 3px 0 #b8400f;
+      box-shadow: 0 8px 22px rgba(28, 27, 25, 0.28);
       font: 600 14px/1.2 "IBM Plex Sans", system-ui, sans-serif;
     }
     #wp-site-controls a, #wp-site-controls button {
@@ -80,8 +80,8 @@
     }
     #wp-site-controls a { background: #f6d04d; color: #1c1b19; }
     #wp-site-controls a:hover { background: #fde68a; color: #1c1b19; }
-    #wp-site-controls button { background: transparent; color: #f6f1e7; }
-    #wp-site-controls button:hover { background: #3a3832; color: #f6f1e7; }
+    #wp-site-controls button { background: rgba(246, 241, 231, 0.14); color: #f6f1e7; }
+    #wp-site-controls button:hover { background: rgba(246, 241, 231, 0.26); color: #f6f1e7; }
     #wp-site-controls a:focus-visible, #wp-site-controls button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
     .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
     .skip-link:focus { left: 0.5rem; z-index: 2147483647; padding: 0.6rem 1rem; background: #1c1b19; color: #f6f1e7; border: 2px solid #f6d04d; border-radius: 8px; font: 600 14px/1.2 "IBM Plex Sans", system-ui, sans-serif; }

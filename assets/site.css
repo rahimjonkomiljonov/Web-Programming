@@ -257,29 +257,49 @@ main > h2:not(.section-title) { margin: 44px 0 14px; }
 .callout a { color: var(--ink); font-weight: 600; }
 
 /* ---------- buttons ---------- */
+/* Keycap style: solid fill, ink outline, a short ink "edge" underneath that presses in. */
 button, .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 0 20px;
+  padding: 0 22px;
   border: var(--stroke);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--accent);
-  box-shadow: 3px 3px 0 var(--ink);
+  box-shadow: 0 3px 0 var(--ink);
   color: #fff;
   font: 600 0.98rem/1 var(--font-body);
+  letter-spacing: 0.005em;
   text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  transition: transform 100ms ease, box-shadow 100ms ease, background-color 120ms ease, color 120ms ease;
 }
-button:hover, .btn:hover { background: var(--accent-dark); color: #fff; transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--ink); }
-button:active, .btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--ink); }
-button.secondary, .btn.alt { background: var(--surface); color: var(--ink); }
-button.secondary:hover, .btn.alt:hover { background: var(--marker); color: var(--ink); }
-button:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: 3px 3px 0 var(--ink); }
-button:disabled:hover { background: var(--accent); }
+button:hover, .btn:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 0 var(--ink); }
+button:active, .btn:active { transform: translateY(3px); box-shadow: 0 0 0 var(--ink); }
+button:focus-visible, .btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
+
+/* secondary: flat, outlined, fills with the marker on hover */
+button.secondary, .btn.alt {
+  background: var(--surface);
+  box-shadow: none;
+  color: var(--ink);
+}
+button.secondary:hover, .btn.alt:hover { background: var(--marker); color: var(--ink); transform: none; box-shadow: none; }
+button.secondary:active, .btn.alt:active { transform: translateY(1px); background: #eab935; box-shadow: none; }
+
+/* disabled: clearly inactive, no depth */
+button:disabled, button:disabled:hover, button:disabled:active {
+  border: 1.5px dashed #a79e8a;
+  background: #e9e2d2;
+  box-shadow: none;
+  color: #6f685a;
+  cursor: not-allowed;
+  opacity: 1;
+  transform: none;
+}
 .actions, .controls { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; }
 
 /* ---------- forms ---------- */
