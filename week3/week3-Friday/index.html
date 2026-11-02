@@ -3,38 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Week 3 Friday | Web Programming</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 42px 20px 96px; background: #eef3f1; color: #172b32; font-family: "Trebuchet MS", system-ui, sans-serif; }
-    main { width: min(100%, 760px); margin: 0 auto; }
-    .eyebrow { color: #136f63; font: 700 0.8rem monospace; }
-    h1 { margin: 12px 0 8px; font: 500 clamp(2.3rem, 7vw, 3.6rem)/1 Georgia, "Times New Roman", serif; }
-    .intro { margin: 0 0 28px; color: #587078; line-height: 1.6; }
-    h2 { margin: 0 0 10px; font-size: 1rem; }
-    ol { margin: 0; padding: 0; border-top: 1px solid #cbd9d7; list-style: none; }
-    li { border-bottom: 1px solid #cbd9d7; }
-    li a { display: flex; justify-content: space-between; gap: 14px; padding: 13px 10px; color: #172b32; text-decoration: none; }
-    li a:hover { background: #fff; }
-    li a:focus-visible { outline: 3px solid #2859a8; outline-offset: 2px; }
-    li span { color: #136f63; font: 700 0.8rem monospace; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/site.css">
 </head>
 <body>
-  <main>
-    <span class="eyebrow">K0126002 · WEEK 03 · FRIDAY</span>
-    <h1>Advanced CSS Practice</h1>
-    <p class="intro">Week 3 Friday exercises and projects.</p>
+  <header class="site-header">
+    <a class="brand" href="../../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Week 3</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Friday</span>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 03 · Friday</p>
+      <h1>Advanced CSS Practice</h1>
+      <p class="intro">Week 3 Friday exercises and projects.</p>
+    </div>
     <section aria-labelledby="exercise-heading">
-      <h2 id="exercise-heading">Exercises</h2>
-      <ol>
-        <li><a href="exercise1-badge.html">Badge <span>01</span></a></li>
-        <li><a href="exercise2-hover-card.html">Hover Card <span>02</span></a></li>
-        <li><a href="exercise3-spinner.html">Spinner <span>03</span></a></li>
-        <li><a href="exercise4-variables-theme.html">Variables Theme <span>04</span></a></li>
-        <li><a href="exercise5-fixed-nav.html">Fixed Navigation <span>05</span></a></li>
-        <li><a href="exercise6-responsive-grid.html">Responsive Grid <span>06</span></a></li>
-        <li><a href="exercise7-portfolio.html">Portfolio <span>07</span></a></li>
+      <h2 class="section-title" id="exercise-heading">Exercises</h2>
+      <ol class="index">
+        <li><a href="exercise1-badge.html"><span class="num">01</span><span><span class="name">Badge</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise2-hover-card.html"><span class="num">02</span><span><span class="name">Hover Card</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise3-spinner.html"><span class="num">03</span><span><span class="name">Spinner</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise4-variables-theme.html"><span class="num">04</span><span><span class="name">Variables Theme</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise5-fixed-nav.html"><span class="num">05</span><span><span class="name">Fixed Navigation</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise6-responsive-grid.html"><span class="num">06</span><span><span class="name">Responsive Grid</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="exercise7-portfolio.html"><span class="num">07</span><span><span class="name">Portfolio</span></span><span class="go" aria-hidden="true">→</span></a></li>
       </ol>
     </section>
   </main>

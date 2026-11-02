@@ -3,180 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eef3f1">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Web Programming | Rahimjon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="assets/site.css">
   <style>
-    :root {
-      color-scheme: light;
-      --paper: #eef3f1;
-      --surface: #fff;
-      --ink: #172b32;
-      --muted: #587078;
-      --line: #cbd9d7;
-      --green: #136f63;
-      --blue: #2859a8;
-      --coral: #c84f38;
-      --yellow: #f4d84b;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: "Trebuchet MS", system-ui, sans-serif;
-    }
-    .masthead {
-      padding: 20px max(20px, calc((100vw - 1080px) / 2));
-      border-bottom: 1px solid var(--line);
-      background: var(--surface);
-      color: var(--muted);
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-    main { width: min(100% - 40px, 1080px); margin: 0 auto; }
-    .intro { padding: 42px 0 28px; }
-    .eyebrow { color: var(--green); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
-    h1 {
-      max-width: 760px;
-      margin: 10px 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(2.4rem, 7vw, 5rem);
-      font-weight: 500;
-      line-height: 0.98;
-    }
-    .intro p { max-width: 610px; margin: 16px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
-    .week-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .week-card {
-      min-height: 190px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-top: 4px solid var(--green);
-      border-radius: 7px;
-      background: var(--surface);
-      color: var(--ink);
-      text-decoration: none;
-      transition: transform 150ms ease, box-shadow 150ms ease;
-    }
-    .week-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(23, 43, 50, .1); }
-    .week-card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-    .week-card.week-four { border-top-color: var(--yellow); }
-    .week-card.group-project { border-top-color: var(--blue); }
-    .week-number { color: var(--green); font: 700 0.8rem monospace; }
-    .week-card h2 { margin: 14px 0 6px; font-size: 1.35rem; }
-    .week-card p { margin: 0; color: var(--muted); font: 0.92rem/1.5 system-ui, sans-serif; }
-    .open-week { display: flex; justify-content: space-between; margin-top: 24px; color: var(--green); font-size: 0.9rem; font-weight: 700; }
-    .week-card.group-project .week-number,
-    .week-card.group-project .open-week { color: var(--blue); }
-    .instagram-follow {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 18px;
-      margin: 28px 0;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-top: 4px solid var(--blue);
-      border-radius: 7px;
-      background: var(--surface);
-    }
-    .instagram-follow img { display: block; width: 140px; height: 140px; }
-    .instagram-follow h2 { margin: 0 0 8px; font-size: 1.2rem; }
-    .instagram-follow p { margin: 0; color: var(--muted); line-height: 1.5; }
-    .instagram-follow a { color: var(--blue); font-weight: 700; }
-    .instagram-follow a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
-    @media (max-width: 680px) {
-      .week-grid { grid-template-columns: 1fr; }
-      .week-card { min-height: 160px; }
-    }
-    @media (max-width: 390px) {
-      main { width: min(100% - 28px, 1080px); }
-    }
-    .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
-    .skip-link:focus { left: 0.5rem; z-index: 9999; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font-weight: 700; }
+    .follow { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 44px; }
+    .follow img { display: block; width: 140px; height: 140px; }
+    .follow h2 { margin-bottom: 8px; font-size: 1.3rem; }
+    .follow p { margin: 0; }
   </style>
 </head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  <div class="masthead">GACHON UNIVERSITY <span aria-hidden="true">/</span> K0126002</div>
-  <main id="main-content">
-    <header class="intro">
-      <span class="eyebrow">Course archive · Rahimjon</span>
-      <h1>Web Programming</h1>
-      <p>Select a week to browse its classwork and exercises.</p>
-    </header>
+<body class="pw-980">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <p class="crumbs">K0126002 · 2026 Fall</p>
+  </header>
+  <main class="wrap" id="main-content">
+    <div class="page-head">
+      <p class="eyebrow">Course archive · Rahimjon</p>
+      <h1>Web <span class="marker">Programming</span></h1>
+      <p class="intro">Gachon University, K0126002. Pick a week to browse its classwork and exercises.</p>
+    </div>
 
-    <nav class="week-grid" aria-label="Course weeks">
-      <a class="week-card" href="week2/index.html">
+    <nav class="tile-grid" aria-label="Course weeks">
+      <a class="tile" href="week2/index.html">
         <div>
-          <span class="week-number">W02</span>
+          <span class="tile-num">W02</span>
           <h2>Week 2</h2>
           <p>HTML foundations and introductory web pages.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card" href="week3/index.html">
+      <a class="tile" href="week3/index.html">
         <div>
-          <span class="week-number">W03</span>
+          <span class="tile-num">W03</span>
           <h2>Week 3</h2>
           <p>CSS styling, layouts, and advanced Friday practice.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card week-four" href="week4/index.html">
+      <a class="tile" href="week4/index.html">
         <div>
-          <span class="week-number">W04</span>
+          <span class="tile-num">W04</span>
           <h2>Week 4</h2>
           <p>JavaScript DOM and events.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card" href="week5/index.html">
+      <a class="tile" href="week5/index.html">
         <div>
-          <span class="week-number">W05</span>
+          <span class="tile-num">W05</span>
           <h2>Week 5</h2>
           <p>JavaScript conditions, loops, and a counter mini-app.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card" href="week7/index.html">
+      <a class="tile" href="week7/index.html">
         <div>
-          <span class="week-number">W07</span>
+          <span class="tile-num">W07</span>
           <h2>Week 7</h2>
-          <p>Fetch API and async/await with free public APIs.</p>
+          <p>Fetch API and async/await with free public APIs, plus a book search.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card" href="week8/index.html">
+      <a class="tile" href="week8/index.html">
         <div>
-          <span class="week-number">W08</span>
+          <span class="tile-num">W08</span>
           <h2>Week 8</h2>
           <p>HTML forms and JavaScript validation: contact and registration forms.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card" href="week9/index.html">
+      <a class="tile" href="week9/index.html">
         <div>
-          <span class="week-number">W09</span>
+          <span class="tile-num">W09</span>
           <h2>Week 9</h2>
           <p>Web accessibility: Lighthouse audit, fixes and skip links.</p>
         </div>
-        <span class="open-week">Open week <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open week <span aria-hidden="true">→</span></span>
       </a>
-      <a class="week-card group-project" href="group%20project/index.html">
+      <a class="tile inverse" href="group%20project/index.html">
         <div>
-          <span class="week-number">GP</span>
+          <span class="tile-num">GP</span>
           <h2>Group Project</h2>
           <p>Overlap: project overview, live site link and presentation deck.</p>
         </div>
-        <span class="open-week">Open project <span aria-hidden="true">→</span></span>
+        <span class="tile-go">Open project <span aria-hidden="true">→</span></span>
       </a>
     </nav>
-    <section class="instagram-follow" aria-labelledby="instagram-heading">
+
+    <section class="follow card" aria-labelledby="instagram-heading">
       <a href="https://www.instagram.com/overlaps.app?mdxt=NHZzNXEyZTI0em8y" target="_blank" rel="noopener noreferrer">
-        <img src="group%20project/instagram-qr.svg" alt="QR code for the Overlap Instagram profile">
+        <img src="group%20project/instagram-qr.svg" alt="QR code for the Overlap Instagram profile" width="140" height="140">
       </a>
       <div>
         <h2 id="instagram-heading">Follow Overlap</h2>
@@ -186,7 +107,6 @@
       </div>
     </section>
   </main>
-  <footer id="wp-site-footer">Created by Rahimjon | Student ID: 202438377</footer>
   <script src="site-nav.js" defer></script>
 </body>
 </html>

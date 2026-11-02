@@ -14,8 +14,11 @@
   }
 
   const homeUrl = new URL('./index.html', script.src);
-  const controls = document.createElement('nav');
+
+  // A plain div (not <nav>) so exercise pages with their own "nav { ... }" CSS cannot restyle it.
+  const controls = document.createElement('div');
   controls.id = 'wp-site-controls';
+  controls.setAttribute('role', 'group');
   controls.setAttribute('aria-label', 'Site navigation');
 
   const homeLink = document.createElement('a');
@@ -40,6 +43,7 @@
   footer.textContent = 'Created by Rahimjon | Student ID: 202438377';
   if (!footer.isConnected) document.body.appendChild(footer);
 
+  // Same look on every page, including the Week 3 CSS exercises that keep their own styles.
   const styles = document.createElement('style');
   styles.textContent = `
     body { padding-bottom: max(82px, calc(env(safe-area-inset-bottom) + 72px)) !important; }
@@ -51,11 +55,11 @@
       display: flex;
       gap: 6px;
       padding: 6px;
-      border: 1px solid #b9c9cc;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 4px 18px rgba(23, 43, 50, .18);
-      font: 600 14px/1.2 system-ui, sans-serif;
+      border: 1.5px solid #1c1b19;
+      border-radius: 999px;
+      background: #1c1b19;
+      box-shadow: 3px 3px 0 #b8400f;
+      font: 600 14px/1.2 "IBM Plex Sans", system-ui, sans-serif;
     }
     #wp-site-controls a, #wp-site-controls button {
       min-width: 72px;
@@ -63,25 +67,30 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 12px;
-      border: 1px solid #cbd9d7;
-      border-radius: 5px;
-      background: #f5f8f7;
-      color: #172b32;
+      margin: 0;
+      padding: 8px 16px;
+      border: 0;
+      border-radius: 999px;
+      box-shadow: none;
       font: inherit;
       text-decoration: none;
       cursor: pointer;
+      transform: none;
+      transition: background-color 120ms ease;
     }
-    #wp-site-controls a { border-color: #136f63; background: #136f63; color: #fff; }
-    #wp-site-controls a:focus-visible, #wp-site-controls button:focus-visible { outline: 3px solid #2859a8; outline-offset: 2px; }
+    #wp-site-controls a { background: #f6d04d; color: #1c1b19; }
+    #wp-site-controls a:hover { background: #fde68a; color: #1c1b19; }
+    #wp-site-controls button { background: transparent; color: #f6f1e7; }
+    #wp-site-controls button:hover { background: #3a3832; color: #f6f1e7; }
+    #wp-site-controls a:focus-visible, #wp-site-controls button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
     .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
-    .skip-link:focus { left: 0.5rem; z-index: 2147483647; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font: 700 14px/1.2 system-ui, sans-serif; }
+    .skip-link:focus { left: 0.5rem; z-index: 2147483647; padding: 0.6rem 1rem; background: #1c1b19; color: #f6f1e7; border: 2px solid #f6d04d; border-radius: 8px; font: 600 14px/1.2 "IBM Plex Sans", system-ui, sans-serif; }
     #wp-site-footer {
       margin: 36px 20px 0;
       padding: 18px 0 24px;
-      border-top: 1px solid #cbd9d7;
-      color: #587078;
-      font: 14px/1.5 system-ui, sans-serif;
+      border-top: 1.5px dashed #b9ae96;
+      color: #5c564a;
+      font: 500 13px/1.5 "IBM Plex Mono", ui-monospace, Consolas, monospace;
       text-align: center;
     }
   `;

@@ -13,6 +13,8 @@ on:
       - 'week7/**'
       - 'week8/**'
       - 'week9/**'
+      - 'assets/**'
+      - 'group project/**'
       - '.github/workflows/deploy-week4.yml'
   workflow_dispatch:
 

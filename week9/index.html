@@ -3,30 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Week 9 | Web Accessibility</title>
-  <link rel="stylesheet" href="../week7/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
   <style>
-    h2 { margin: 36px 0 12px; font: 500 1.5rem Georgia, serif; }
-    h3 { margin: 0 0 4px; }
-    section { margin-bottom: 28px; }
-    figure { margin: 0; }
-    figcaption { margin-top: 6px; color: #587078; font-size: 0.9rem; }
-    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
-    .shots img { border: 1px solid #cbd9d7; border-radius: 6px; width: 100%; height: auto; }
-    code { background: #e1ebe8; padding: 1px 5px; border-radius: 4px; }
+    .shots-card { padding: 22px 22px 26px; }
+    .shots-card h3 { margin-bottom: 4px; }
+    .shots-card .muted { margin-bottom: 16px; }
+    .shots-card .shots img { box-shadow: none; }
   </style>
 </head>
 <body>
-  <main>
-    <span class="eyebrow">K0126002 · WEEK 09 · HOMEWORK</span>
-    <h1>Accessibility Audit</h1>
-    <p class="intro">I ran Lighthouse (Accessibility) in Chrome DevTools on my site and fixed the pages that didn't score 100.</p>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span aria-current="page">Week 9</span>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 09 · Homework</p>
+      <h1>Accessibility <span class="marker">Audit</span></h1>
+      <p class="intro">I ran Lighthouse (Accessibility) in Chrome DevTools on my site and fixed the pages that didn't score 100.</p>
+    </div>
 
-    <h2>What I found</h2>
+    <h2 class="section-title">What I found</h2>
     <p>12 pages scored below 100 on my Week 2 and Week 3 exercises. The screenshots below are from my own Chrome, on the live site, and the URL is in the address bar of each one. Both the before and after screenshots use the same URLs.</p>
     <p>I took screenshots for 4 pages. The other 8 pages (week2/ex4, week2/ex7, week3/ex1, ex2, ex4, ex5, ex6 and ex7) had the same missing title problem, and the Week 2 ones also had no lang. They score 100 now too.</p>
+    <p class="muted">The screenshots were taken before I gave the whole site its new look, so the pages in them look different from the live pages today. The audit results still apply.</p>
 
-    <h2>What I fixed</h2>
+    <h2 class="section-title">What I fixed</h2>
     <ul>
       <li><strong>Missing page title:</strong> added a <code>&lt;title&gt;</code> to 11 pages. Four Week 2 pages had no <code>&lt;head&gt;</code> at all, so I turned them into full pages.</li>
       <li><strong>Missing language:</strong> added <code>lang="en"</code> to those four Week 2 pages.</li>
@@ -36,8 +45,8 @@
       <li><strong>Skip link:</strong> I added a "Skip to main content" link to every page. It shows up when you press <kbd>Tab</kbd>.</li>
     </ul>
 
-    <h2>Before and after</h2>
-    <section>
+    <h2 class="section-title">Before and after</h2>
+    <section class="card shots-card">
       <h3>week2/ex2.html: 84 → 100</h3>
       <p class="muted">Problem: no title, no lang, no main landmark.</p>
       <div class="shots">
@@ -45,7 +54,7 @@
         <figure><img src="img/after-week2-ex2.png" alt="Lighthouse in Chrome DevTools on week2/ex2.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
-    <section>
+    <section class="card shots-card">
       <h3>week2/ex3.html: 79 → 100</h3>
       <p class="muted">Problem: no title, no lang, links too small, no main landmark.</p>
       <div class="shots">
@@ -53,7 +62,7 @@
         <figure><img src="img/after-week2-ex3.png" alt="Lighthouse in Chrome DevTools on week2/ex3.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
-    <section>
+    <section class="card shots-card">
       <h3>week3/ex3.html: 84 → 100</h3>
       <p class="muted">Problem: low contrast, no title, no main landmark.</p>
       <div class="shots">
@@ -61,7 +70,7 @@
         <figure><img src="img/after-week3-ex3.png" alt="Lighthouse in Chrome DevTools on week3/ex3.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
-    <section>
+    <section class="card shots-card">
       <h3>week3/ex8.html: 92 → 100</h3>
       <p class="muted">Problem: low contrast in the footer.</p>
       <div class="shots">

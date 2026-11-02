@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 8 | HTML Forms & Validation</title>
-  <link rel="stylesheet" href="../week7/style.css">
-  <style>
-    ol { margin: 0; padding: 0; border-top: 1px solid #cbd9d7; list-style: none; }
-    li { border-bottom: 1px solid #cbd9d7; }
-    li a { display: flex; justify-content: space-between; gap: 14px; padding: 15px 10px; color: #172b32; text-decoration: none; }
-    li a:hover { background: #fff; }
-    li span { color: #136f63; font: 700 0.8rem monospace; }
-  </style>
+  <meta name="theme-color" content="#f6f1e7">
+  <title>Week 8 | HTML Forms &amp; Validation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-  <main>
-    <span class="eyebrow">K0126002 · WEEK 08</span>
-    <h1>HTML Forms &amp; Validation</h1>
-    <p class="intro">Homework: a contact form with HTML5 validation, and a registration form with JavaScript validation.</p>
-    <ol>
-      <li><a href="contact.html">Contact Form <span>01</span></a></li>
-      <li><a href="registration.html">Registration Form (JS Validation) <span>02</span></a></li>
-    </ol>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span aria-current="page">Week 8</span>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 08</p>
+      <h1>HTML Forms &amp; Validation</h1>
+      <p class="intro">Homework: a contact form with HTML5 validation, and a registration form with JavaScript validation.</p>
+    </div>
+    <section aria-labelledby="exercise-heading">
+      <h2 class="section-title" id="exercise-heading">Exercises</h2>
+      <ol class="index">
+        <li><a href="contact.html"><span class="num">01</span><span><span class="name">Contact Form</span><span class="detail">HTML5 validation with required, pattern and type="email".</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="registration.html"><span class="num">02</span><span><span class="name">Registration Form (JS Validation)</span><span class="detail">JavaScript validation with live feedback and ARIA.</span></span><span class="go" aria-hidden="true">→</span></a></li>
+      </ol>
+    </section>
   </main>
   <script src="../site-nav.js" defer></script>
 </body>

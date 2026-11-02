@@ -3,58 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eef3f1">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Group Project | Overlap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
   <style>
-    :root {
-      --paper: #eef3f1;
-      --surface: #fff;
-      --ink: #172b32;
-      --muted: #587078;
-      --line: #cbd9d7;
-      --green: #136f63;
-      --blue: #2859a8;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Trebuchet MS", system-ui, sans-serif; line-height: 1.6; }
-    main { width: min(100% - 40px, 920px); margin: 0 auto; padding: 42px 0 24px; }
-    .eyebrow { color: var(--blue); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; }
-    h1 { margin: 10px 0; font: 500 clamp(2.4rem, 7vw, 4.5rem)/1 Georgia, "Times New Roman", serif; }
-    h2 { margin: 44px 0 14px; padding-top: 22px; border-top: 1px solid var(--line); font: 500 1.7rem Georgia, serif; }
-    h3 { margin: 0 0 6px; font-size: 1.05rem; }
-    p { margin: 0 0 12px; color: var(--muted); }
-    .lead { font-size: 1.15rem; max-width: 640px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 0; }
-    .btn { padding: 11px 18px; border: 1px solid var(--blue); border-radius: 6px; background: var(--blue); color: #fff; font-weight: 700; text-decoration: none; }
-    .btn.alt { background: var(--surface); color: var(--blue); }
-    .btn:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
-    .card { padding: 18px; border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 7px; background: var(--surface); }
-    .card p { margin: 0; font-size: 0.93rem; }
-    .team .card { border-top-color: var(--blue); }
-    .mono { font-family: monospace; color: var(--green); font-weight: 700; }
-    table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line); font-size: 0.93rem; }
-    th, td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; }
-    th { background: #f4f8ff; }
-    td.num, th.num { text-align: right; font-family: monospace; }
-    pre { margin: 0 0 14px; padding: 14px; overflow-x: auto; border-radius: 6px; background: var(--ink); color: #e8f1ef; font-size: 0.88rem; }
-    ul { margin: 0; padding-left: 20px; color: var(--muted); }
-    li { margin-bottom: 6px; }
-    .note { margin-top: 28px; font-size: 0.88rem; }
-    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
-    .qr { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 7px; background: #fff; color: var(--ink); text-align: center; text-decoration: none; font-size: 0.85rem; }
+    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px; }
+    .qr { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px; border: var(--stroke); border-radius: var(--radius); background: var(--surface); box-shadow: var(--sticker); color: var(--ink); font-size: 0.85rem; line-height: 1.4; text-align: center; text-decoration: none; }
+    .qr:hover { color: var(--ink); }
     .qr img { display: block; background: #fff; }
-    .follow { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; padding: 20px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 7px; background: var(--surface); }
-    .follow img { width: 160px; height: 160px; }
-    .follow p { margin: 0 0 8px; }
-    @media (max-width: 480px) { main { width: min(100% - 28px, 920px); } }
-    .skip-link { position: absolute; left: -9999px; top: 0.5rem; }
-    .skip-link:focus { left: 0.5rem; z-index: 9999; padding: 0.5rem 1rem; background: #172b32; color: #fff; border-radius: 4px; font-weight: 700; }
+    .note { margin-top: 28px; color: var(--muted); font-size: 0.9rem; }
+    .team .mono { margin: 0; color: var(--accent-dark); font-weight: 600; }
   </style>
 </head>
-<body>
+<body class="pw-980">
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <main id="main-content">
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span aria-current="page">Group Project</span>
+    </nav>
+  </header>
+  <main class="wrap" id="main-content">
     <span class="eyebrow">K0126002 · Group project</span>
     <div class="hero">
     <div>
@@ -73,21 +45,21 @@
       <a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/blob/main/group%20project/README.md" target="_blank" rel="noopener noreferrer">Read the README</a>
     </div>
 
-    <h2>Team</h2>
+    <h2 class="section-title">Team</h2>
     <div class="grid team">
       <div class="card"><h3>Rahimjon</h3><p class="mono">202438377</p></div>
       <div class="card"><h3>Asilbek</h3><p class="mono">202438394</p></div>
       <div class="card"><h3>Shuhratxon</h3><p class="mono">202537358</p></div>
     </div>
 
-    <h2>The problem</h2>
+    <h2 class="section-title">The problem</h2>
     <div class="grid">
       <div class="card"><h3>Same lecture, never spoken</h3><p>You can see the same faces for a whole semester without saying hello.</p></div>
       <div class="card"><h3>Most apps start from looks</h3><p>A photo and a swipe tell you nothing about whether you would get along.</p></div>
       <div class="card"><h3>Campus life has better reasons</h3><p>A course, a club or a free hour makes the first message easy.</p></div>
     </div>
 
-    <h2>The idea</h2>
+    <h2 class="section-title">The idea</h2>
     <ul>
       <li><strong>Only shared things count.</strong> Courses, clubs, free time, interests and values make the score.</li>
       <li><strong>Six people a day.</strong> A short list instead of an endless feed.</li>
@@ -95,7 +67,7 @@
       <li><strong>Four modes:</strong> Friends, Study buddy, Dating (needs its own consent) and Open.</li>
     </ul>
 
-    <h2>The app: four tabs</h2>
+    <h2 class="section-title">The app: four tabs</h2>
     <div class="grid">
       <div class="card"><h3>Picks</h3><p>Six people a day, each one explained.</p></div>
       <div class="card"><h3>Waves</h3><p>Who waved at you, with an optional note.</p></div>
@@ -104,7 +76,7 @@
     </div>
     <p class="note">Joining takes about three minutes: emailed six-digit code (no password), age check that keeps only the birth year, the overlap questions, then photos and a selfie checked by a human moderator.</p>
 
-    <h2>How matching works</h2>
+    <h2 class="section-title">How matching works</h2>
     <pre>S(a,b) = 100 × ( wC·C + wK·K + wT·T + wI·I + wV·V )</pre>
     <div class="grid">
       <div class="card"><h3>C · Courses</h3><p>Do you take the same course section? Sharing a section counts extra.</p></div>
@@ -128,7 +100,7 @@
       </tbody>
     </table>
 
-    <h2>How it is built</h2>
+    <h2 class="section-title">How it is built</h2>
     <div class="grid">
       <div class="card"><h3>Browser</h3><p>React 19, Tailwind v4, Korean and English, swipe gestures, mobile first.</p></div>
       <div class="card"><h3>Server</h3><p>Next.js 16 with the App Router and server actions. Every action checks permissions itself.</p></div>
@@ -137,7 +109,7 @@
     </div>
     <p class="note">About 47,000 lines of TypeScript, 49 database tables, 1,475 unit tests and 27 end-to-end suites.</p>
 
-    <h2>Safety and privacy</h2>
+    <h2 class="section-title">Safety and privacy</h2>
     <ul>
       <li><strong>Report, human decision, clear enforcement:</strong> warn, 7-day suspension or ban, with a reason and an appeal.</li>
       <li><strong>No ID numbers:</strong> only the birth year is kept after the age check.</li>
@@ -147,14 +119,14 @@
       <li><strong>Delete means delete:</strong> 30-day grace period, then your identity is scrubbed.</li>
     </ul>
 
-    <h2>Status and roadmap</h2>
+    <h2 class="section-title">Status and roadmap</h2>
     <ul>
       <li><strong>Now:</strong> live at overlaps.tech, no invites yet; mobile app in progress.</li>
       <li><strong>First pilot:</strong> invite-only, at most 50 people, one campus.</li>
       <li><strong>Later:</strong> more campuses, Android and iPhone apps, chat photos.</li>
     </ul>
 
-    <h2>What we learned</h2>
+    <h2 class="section-title">What we learned</h2>
     <ul>
       <li><strong>Small pure functions</strong> let property tests catch a real bug with duplicate items.</li>
       <li><strong>Never select it, don't just hide it:</strong> a field a role must not see should never be loaded for that role.</li>

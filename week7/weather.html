@@ -3,11 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Seoul Weather | Week 7</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-  <main>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Week 7</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Seoul Weather</span>
+    </nav>
+  </header>
+  <main class="wrap">
     <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 03</span>
     <h1>Seoul Weather</h1>
     <p class="intro">Real weather from Open-Meteo, no API key needed.<br><span class="api">api.open-meteo.com/v1/forecast?latitude=37.5&amp;longitude=127&amp;current_weather=true</span></p>

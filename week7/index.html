@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 7 | Fetch API & Async/Await</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0; border-top: 1px solid #cbd9d7; list-style: none; }
-    li { border-bottom: 1px solid #cbd9d7; }
-    li a { display: flex; justify-content: space-between; gap: 14px; padding: 15px 10px; color: #172b32; text-decoration: none; }
-    li a:hover { background: #fff; }
-    li span { color: #136f63; font: 700 0.8rem monospace; }
-    li.project-link a { background: #f4f8ff; }
-    li.project-link span { color: #2859a8; }
-    @media (max-width: 480px) { ol { grid-template-columns: 1fr; } }
-  </style>
+  <meta name="theme-color" content="#f6f1e7">
+  <title>Week 7 | Fetch API &amp; Async/Await</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-  <main>
-    <span class="eyebrow">K0126002 · WEEK 07</span>
-    <h1>Fetch API &amp; Async/Await</h1>
-    <p class="intro">Seven exercises that call free public APIs.</p>
-    <ol>
-      <li><a href="joke.html">Random Joke Fetcher <span>01</span></a></li>
-      <li><a href="posts.html">Blog Posts <span>02</span></a></li>
-      <li><a href="weather.html">Seoul Weather <span>03</span></a></li>
-      <li><a href="user.html">Random User <span>04</span></a></li>
-      <li><a href="pokemon.html">Pokémon Finder <span>05</span></a></li>
-      <li><a href="countries.html">Country Table <span>06</span></a></li>
-      <li><a href="books.html">Book Search <span>07</span></a></li>
-      <li class="project-link" style="grid-column: 1 / -1;"><a href="../group%20project/index.html">Group Project: Overlap <span>GP</span></a></li>
-    </ol>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span aria-current="page">Week 7</span>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 07</p>
+      <h1>Fetch API &amp; Async/Await</h1>
+      <p class="intro">Seven exercises that call free public APIs.</p>
+    </div>
+    <section aria-labelledby="exercise-heading">
+      <h2 class="section-title" id="exercise-heading">Exercises</h2>
+      <ol class="index two">
+        <li><a href="joke.html"><span class="num">01</span><span><span class="name">Random Joke Fetcher</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="posts.html"><span class="num">02</span><span><span class="name">Blog Posts</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="weather.html"><span class="num">03</span><span><span class="name">Seoul Weather</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="user.html"><span class="num">04</span><span><span class="name">Random User</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="pokemon.html"><span class="num">05</span><span><span class="name">Pokémon Finder</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="countries.html"><span class="num">06</span><span><span class="name">Country Table</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="books.html"><span class="num">07</span><span><span class="name">Book Search</span></span><span class="go" aria-hidden="true">→</span></a></li>
+      </ol>
+    </section>
+    <section class="callout" aria-labelledby="gp-heading">
+      <h2 id="gp-heading">Group Project: Overlap</h2>
+      <p>A campus introduction app that matches students on what they share.</p>
+      <a href="../group%20project/index.html">Open the project page <span aria-hidden="true">→</span></a>
+    </section>
   </main>
   <script src="../site-nav.js" defer></script>
 </body>

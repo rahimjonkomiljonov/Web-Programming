@@ -3,57 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Exercise 1 - Click Counter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: #f0f4ff;
-      color: #1a2340;
-      font-family: system-ui, sans-serif;
-    }
-    main {
-      width: min(100%, 440px);
-      padding: 32px;
-      border: 1px solid #c8d4f0;
-      border-radius: 12px;
-      background: #fff;
-      text-align: center;
-    }
-    .eyebrow { color: #1a56db; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
-    h1 { margin: 8px 0; font-size: 1.8rem; }
-    p { color: #5a6a8a; }
-    #clicker {
-      margin-top: 12px;
-      padding: 13px 26px;
-      border: 0;
-      border-radius: 8px;
-      background: #1a56db;
-      color: white;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    #clicker:hover { background: #1240b0; }
-    #clicker:focus-visible { outline: 3px solid #f7df1e; outline-offset: 3px; }
-    #clicker.done { background: #16a34a; }
-    #count { margin: 20px 0 4px; color: #1a56db; font-size: 3rem; font-weight: 800; line-height: 1; }
+    #count { margin: 22px 0 4px; color: var(--accent); font: 700 3.6rem/1 var(--font-display); }
     #message { min-height: 1.7em; margin-bottom: 0; }
+    #clicker { margin-top: 10px; }
+    #clicker.done { background: var(--green); }
+    #clicker.done:hover { background: #17613c; }
   </style>
 </head>
-<body>
-  <main>
+<body class="pw-540">
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="index.html">Week 4</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Click Counter</span>
+    </nav>
+  </header>
+  <main class="wrap"><div class="panel panel-center">
     <span class="eyebrow">Week 4 · Exercise 1</span>
     <h1>Click Counter</h1>
     <p>Click the button five times to complete the challenge.</p>
     <button id="clicker" type="button">Click me!</button>
     <p id="count" aria-live="polite">0</p>
     <p id="message" aria-live="polite">Keep clicking...</p>
-  </main>
+  </div></main>
   <script>
     const button = document.querySelector('#clicker');
     const countDisplay = document.querySelector('#count');

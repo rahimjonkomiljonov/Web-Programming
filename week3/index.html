@@ -3,50 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
   <title>Week 3 | Web Programming</title>
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 42px 20px 96px; background: #eef3f1; color: #172b32; font-family: "Trebuchet MS", system-ui, sans-serif; }
-    main { width: min(100%, 820px); margin: 0 auto; }
-    .eyebrow { color: #136f63; font: 700 0.8rem monospace; }
-    h1 { margin: 12px 0 8px; font: 500 clamp(2.3rem, 7vw, 3.6rem)/1 Georgia, "Times New Roman", serif; }
-    .intro { margin: 0 0 28px; color: #587078; line-height: 1.6; }
-    h2 { margin: 0 0 10px; font-size: 1rem; }
-    ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; margin: 0; padding: 0; border-top: 1px solid #cbd9d7; list-style: none; }
-    li { border-bottom: 1px solid #cbd9d7; }
-    li a { display: flex; justify-content: space-between; gap: 14px; padding: 13px 10px; color: #172b32; text-decoration: none; }
-    li a:hover { background: #fff; }
-    li a:focus-visible, .friday-link:focus-visible { outline: 3px solid #2859a8; outline-offset: 2px; }
-    li span { color: #136f63; font: 700 0.8rem monospace; }
-    .friday { margin-top: 32px; padding: 18px; border: 1px solid #cbd9d7; border-top: 4px solid #f4d84b; border-radius: 7px; background: #fff; }
-    .friday p { margin: 0 0 14px; color: #587078; }
-    .friday-link { color: #136f63; font-weight: 700; text-decoration: none; }
-    .friday-link:hover { text-decoration: underline; }
-    @media (max-width: 480px) { ol { grid-template-columns: 1fr; } }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&amp;family=IBM+Plex+Mono:wght@500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
-  <main>
-    <span class="eyebrow">K0126002 · WEEK 03</span>
-    <h1>Week 3</h1>
-    <p class="intro">CSS styling, layouts, and responsive web design exercises.</p>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span aria-current="page">Week 3</span>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 03</p>
+      <h1>Week 3</h1>
+      <p class="intro">CSS styling, layouts, and responsive web design exercises.</p>
+    </div>
     <section aria-labelledby="exercise-heading">
-      <h2 id="exercise-heading">Exercises</h2>
-      <ol>
-        <li><a href="ex1.html">Exercise 1 <span>01</span></a></li>
-        <li><a href="ex2.html">Exercise 2 <span>02</span></a></li>
-        <li><a href="ex3.html">Exercise 3 <span>03</span></a></li>
-        <li><a href="ex4.html">Exercise 4 <span>04</span></a></li>
-        <li><a href="ex5.html">Exercise 5 <span>05</span></a></li>
-        <li><a href="ex6.html">Exercise 6 <span>06</span></a></li>
-        <li><a href="ex7.html">Exercise 7 <span>07</span></a></li>
-        <li><a href="ex8.html">Exercise 8 <span>08</span></a></li>
+      <h2 class="section-title" id="exercise-heading">Exercises</h2>
+      <ol class="index two">
+        <li><a href="ex1.html"><span class="num">01</span><span><span class="name">Exercise 1</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex2.html"><span class="num">02</span><span><span class="name">Exercise 2</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex3.html"><span class="num">03</span><span><span class="name">Exercise 3</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex4.html"><span class="num">04</span><span><span class="name">Exercise 4</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex5.html"><span class="num">05</span><span><span class="name">Exercise 5</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex6.html"><span class="num">06</span><span><span class="name">Exercise 6</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex7.html"><span class="num">07</span><span><span class="name">Exercise 7</span></span><span class="go" aria-hidden="true">→</span></a></li>
+        <li><a href="ex8.html"><span class="num">08</span><span><span class="name">Exercise 8</span></span><span class="go" aria-hidden="true">→</span></a></li>
       </ol>
     </section>
-    <section class="friday" aria-labelledby="friday-heading">
+    <section class="callout" aria-labelledby="friday-heading">
       <h2 id="friday-heading">Week 3 Friday</h2>
       <p>Advanced CSS practice projects.</p>
-      <a class="friday-link" href="week3-Friday/index.html">Open Friday exercises <span aria-hidden="true">→</span></a>
+      <a href="week3-Friday/index.html">Open Friday exercises <span aria-hidden="true">→</span></a>
     </section>
   </main>
   <script src="../site-nav.js" defer></script>
