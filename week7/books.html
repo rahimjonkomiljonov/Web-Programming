@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Search | Week 7</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .book { display: flex; gap: 14px; align-items: flex-start; }
+    .book img { width: 64px; height: 96px; object-fit: cover; border-radius: 4px; background: #e1ebe8; flex: none; }
+    .book h3 { margin: 0 0 4px; font-size: 1rem; }
+    .book p { margin: 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="eyebrow">K0126002 · WEEK 07 · EXERCISE 07</span>
+    <h1>Book Search</h1>
+    <p class="intro">Search the Open Library catalogue by title or author.<br><span class="api">openlibrary.org/search.json?q=...</span></p>
+    <form id="search" class="controls">
+      <input id="query" type="search" placeholder="Search books..." aria-label="Search books by title or author" required>
+      <button type="submit" id="go">Search</button>
+    </form>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+    <div id="results" class="grid"></div>
+  </main>
+  <script src="../site-nav.js" defer></script>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const status = $('status'), results = $('results'), goBtn = $('go');
+
+    function render(books) {
+      results.replaceChildren();
+      books.forEach((b) => {
+        const card = document.createElement('article');
+        card.className = 'card book';
+        const img = document.createElement('img');
+        img.alt = '';
+        img.loading = 'lazy';
+        if (b.cover_i) img.src = 'https://covers.openlibrary.org/b/id/' + b.cover_i + '-M.jpg';
+        const info = document.createElement('div');
+        const h = document.createElement('h3');
+        h.textContent = b.title;
+        const author = document.createElement('p');
+        author.className = 'muted';
+        author.textContent = (b.author_name || ['Unknown author']).slice(0, 2).join(', ');
+        const year = document.createElement('p');
+        year.className = 'muted';
+        year.textContent = b.first_publish_year ? 'First published ' + b.first_publish_year : '';
+        info.append(h, author, year);
+        card.append(img, info);
+        results.append(card);
+      });
+    }
+
+    async function searchBooks(q) {
+      goBtn.disabled = true;
+      results.replaceChildren();
+      status.className = 'status';
+      const spinner = document.createElement('span');
+      spinner.className = 'spinner';
+      status.replaceChildren(spinner, 'Searching...');
+      try {
+        const url = 'https://openlibrary.org/search.json?limit=20&fields=key,title,author_name,first_publish_year,cover_i&q=' + encodeURIComponent(q);
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (!data.docs.length) {
+          status.textContent = 'No books found for "' + q + '".';
+          return;
+        }
+        status.textContent = 'Showing ' + data.docs.length + ' of ' + data.numFound.toLocaleString() + ' results.';
+        render(data.docs);
+      } catch {
+        status.className = 'status error';
+        status.textContent = 'Could not search books. Check your connection.';
+      } finally {
+        goBtn.disabled = false;
+      }
+    }
+
+    $('search').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = $('query').value.trim();
+      if (q) searchBooks(q);
+    });
+  </script>
+</body>
+</html>

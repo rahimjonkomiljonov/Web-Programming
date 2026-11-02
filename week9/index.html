@@ -28,67 +28,59 @@
   <main>
     <span class="eyebrow">K0126002 · WEEK 09 · HOMEWORK</span>
     <h1>Web Accessibility Audit</h1>
-    <p class="intro">Lighthouse accessibility audit (Chrome, mobile emulation) of every page on this site, the fixes I made, and a skip link for the course project.</p>
+    <p class="intro">Lighthouse accessibility audit (Chrome, mobile emulation) of every page on this site, using real reports, the fixes I made, and a skip link for the course project.</p>
 
     <h2>Scores</h2>
-    <p>The newest pages (Weeks 4, 5, 7, 8 and the group project) already scored 100. The older Week 2 and Week 3 pages did not, so those were the audit targets: <strong>22 of 48 pages scored below 100 (average 92.3)</strong>. After the fixes, <strong>all 48 pages score 100</strong>.</p>
+    <p>I ran Lighthouse (version 12.8.2, Accessibility category, mobile emulation, Chrome) on every page of this site. <strong>12 of the 48 pages scored below 100 (average 97.6)</strong>. After the fixes, all 49 pages on the live site score 100 (re-run on the GitHub Pages URLs).</p>
     <div class="scores">
-      <div class="card score before"><strong>79</strong>Before<br><span class="muted">week2/ex3.html</span></div>
+      <div class="card score before"><strong>81</strong>Before<br><span class="muted">week2/ex3.html</span></div>
       <div class="card score after"><strong>100</strong>After<br><span class="muted">week2/ex3.html</span></div>
-      <div class="card score before"><strong>84</strong>Before<br><span class="muted">week3/ex3.html</span></div>
+      <div class="card score before"><strong>87</strong>Before<br><span class="muted">week3/ex3.html</span></div>
       <div class="card score after"><strong>100</strong>After<br><span class="muted">week3/ex3.html</span></div>
     </div>
 
     <h2>Lighthouse screenshots</h2>
+    <p class="muted">These are screenshots of the real Lighthouse reports; the audited URL is in the header of each one. The "before" runs use the code from before the fixes (commit <code>1cf03b3</code>), which I served on <code>localhost:8802</code> because that version was never published. The "after" runs use the live GitHub Pages URLs.</p>
     <div class="shots">
-      <figure><img src="img/before-week2-ex3.png" alt="Lighthouse report for week2/ex3.html before the fixes: accessibility score 79, failing audits for missing title, missing lang, small touch targets and no main landmark"><figcaption>Before: week2/ex3.html scores 79</figcaption></figure>
-      <figure><img src="img/after-week2-ex3.png" alt="Lighthouse report for week2/ex3.html after the fixes: accessibility score 100 with no failing audits"><figcaption>After: week2/ex3.html scores 100</figcaption></figure>
-      <figure><img src="img/before-week3-ex3.png" alt="Lighthouse report for week3/ex3.html before the fixes: accessibility score 84, failing audits for color contrast, missing title and no main landmark"><figcaption>Before: week3/ex3.html scores 84</figcaption></figure>
-      <figure><img src="img/after-week3-ex3.png" alt="Lighthouse report for week3/ex3.html after the fixes: accessibility score 100 with no failing audits"><figcaption>After: week3/ex3.html scores 100</figcaption></figure>
+      <figure><img src="img/before-week2-ex3.png" alt="Lighthouse report for http://localhost:8802/week2/ex3.html before the fixes: accessibility score 81, failing audits for missing title, missing lang and touch targets without sufficient size"><figcaption>Before: week2/ex3.html scores 81</figcaption></figure>
+      <figure><img src="img/after-week2-ex3.png" alt="Lighthouse report for rahimjonkomiljonov.github.io/Web-Programming/week2/ex3.html after the fixes: accessibility score 100 with no failing audits"><figcaption>After: week2/ex3.html scores 100</figcaption></figure>
+      <figure><img src="img/before-week3-ex3.png" alt="Lighthouse report for http://localhost:8802/week3/ex3.html before the fixes: accessibility score 87, failing audits for color contrast and missing title"><figcaption>Before: week3/ex3.html scores 87</figcaption></figure>
+      <figure><img src="img/after-week3-ex3.png" alt="Lighthouse report for rahimjonkomiljonov.github.io/Web-Programming/week3/ex3.html after the fixes: accessibility score 100 with no failing audits"><figcaption>After: week3/ex3.html scores 100</figcaption></figure>
     </div>
 
     <h2>Fixes</h2>
+    <p>These are the four failing audits Lighthouse reported, and what I changed for each.</p>
     <ol class="fixes">
-      <li><strong>Added a <code>&lt;main&gt;</code> landmark</strong> (<code>landmark-one-main</code>) to 22 pages, so screen reader users can jump straight to the content.</li>
-      <li><strong>Added <code>lang="en"</code> and a <code>&lt;title&gt;</code></strong> (<code>html-has-lang</code>, <code>document-title</code>). Four Week 2 pages were bare fragments with no <code>&lt;html&gt;</code> or <code>&lt;head&gt;</code>, and seven Week 3 pages had no title. They now have a full document with a descriptive title.</li>
-      <li><strong>Fixed colour contrast</strong> (<code>color-contrast</code>). White text on the Week 3 colour swatches was 2.1:1 to 4.2:1, so the labels are now black (4.9:1 or better on all five). The footer on <code>week3/ex8.html</code> was 2.8:1 (#587078 on navy) and is now #cbd5e1.</li>
-      <li><strong>Enlarged touch targets</strong> (<code>target-size</code>). The menu links on <code>week2/ex3.html</code> were 17px tall and are now at least 24px.</li>
-      <li><strong>Added a skip link</strong> (WCAG 2.4.1, Level A). It sits at the top of the home page and the group project page. For every other page, <code>site-nav.js</code> adds one automatically. It stays off-screen until the first <kbd>Tab</kbd>, then jumps to <code>#main-content</code>.</li>
+      <li><strong>Added a <code>&lt;title&gt;</code></strong> (<code>document-title</code>) to 11 pages: week2/ex2, ex3, ex4, ex7 and week3/ex1 to ex7. Four of the Week 2 pages were bare fragments with no <code>&lt;html&gt;</code> or <code>&lt;head&gt;</code>, so they now have a full document.</li>
+      <li><strong>Added <code>lang="en"</code></strong> (<code>html-has-lang</code>) to the same four Week 2 pages, so screen readers pick the right pronunciation.</li>
+      <li><strong>Fixed colour contrast</strong> (<code>color-contrast</code>) on two pages. On <code>week3/ex3.html</code> white labels on the colour swatches measured 2.14:1 to 3.76:1 in the report, so the labels are now black. On <code>week3/ex8.html</code> the footer text was #587078 on #1e293b (2.78:1) and is now #cbd5e1. Both need at least 4.5:1.</li>
+      <li><strong>Enlarged touch targets</strong> (<code>target-size</code>). The menu links on <code>week2/ex3.html</code> were 17px tall (the minimum is 24px) and are now at least 24px.</li>
+      <li><strong>Added a skip link</strong> (WCAG 2.4.1, Level A). It sits at the top of the home page and the group project page. For every other page, <code>site-nav.js</code> adds one automatically. It stays off-screen until the first <kbd>Tab</kbd>, then jumps to <code>#main-content</code>. I also wrapped the content of the fixed pages in a <code>&lt;main&gt;</code> landmark; Lighthouse did not flag that one, it is just good practice.</li>
     </ol>
     <figure class="card">
       <img src="img/skip-link-focused.png" alt="Home page after pressing Tab once: a dark Skip to main content link appears at the top left" style="max-width: 560px; width: 100%; height: auto;">
-      <figcaption>The skip link after pressing Tab once on the home page.</figcaption>
+      <figcaption>The skip link after pressing Tab once on the live home page (rahimjonkomiljonov.github.io/Web-Programming/).</figcaption>
     </figure>
 
     <h2>All pages that changed</h2>
     <details>
-      <summary>Show 22 pages (before and after)</summary>
+      <summary>Show 12 pages (before and after)</summary>
       <div class="table-wrap">
         <table>
-          <thead><tr><th scope="col">Page</th><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+          <thead><tr><th scope="col">Page</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Failing audits before</th></tr></thead>
           <tbody>
-          <tr><td><a href="../week2/ex3.html">week2/ex3.html</a></td><td>79</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex2.html">week2/ex2.html</a></td><td>84</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex3.html">week3/ex3.html</a></td><td>84</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex4.html">week2/ex4.html</a></td><td>85</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex7.html">week2/ex7.html</a></td><td>86</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex1.html">week3/ex1.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex2.html">week3/ex2.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex4.html">week3/ex4.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex5.html">week3/ex5.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex6.html">week3/ex6.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex7.html">week3/ex7.html</a></td><td>91</td><td>100</td></tr>
-          <tr><td><a href="../week3/ex8.html">week3/ex8.html</a></td><td>92</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise1-badge.html">week3/week3-Friday/exercise1-badge.html</a></td><td>97</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise2-hover-card.html">week3/week3-Friday/exercise2-hover-card.html</a></td><td>97</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise3-spinner.html">week3/week3-Friday/exercise3-spinner.html</a></td><td>97</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise4-variables-theme.html">week3/week3-Friday/exercise4-variables-theme.html</a></td><td>97</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise5-fixed-nav.html">week3/week3-Friday/exercise5-fixed-nav.html</a></td><td>97</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex1.html">week2/ex1.html</a></td><td>98</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex5.html">week2/ex5.html</a></td><td>98</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex6.html">week2/ex6.html</a></td><td>98</td><td>100</td></tr>
-          <tr><td><a href="../week2/ex8.html">week2/ex8.html</a></td><td>98</td><td>100</td></tr>
-          <tr><td><a href="../week3/week3-Friday/exercise6-responsive-grid.html">week3/week3-Friday/exercise6-responsive-grid.html</a></td><td>98</td><td>100</td></tr>
+          <tr><td><a href="../week2/ex3.html">week2/ex3.html</a></td><td>81</td><td>100</td><td>document-title, html-has-lang, target-size</td></tr>
+          <tr><td><a href="../week2/ex2.html">week2/ex2.html</a></td><td>86</td><td>100</td><td>document-title, html-has-lang</td></tr>
+          <tr><td><a href="../week2/ex4.html">week2/ex4.html</a></td><td>87</td><td>100</td><td>document-title, html-has-lang</td></tr>
+          <tr><td><a href="../week3/ex3.html">week3/ex3.html</a></td><td>87</td><td>100</td><td>color-contrast, document-title</td></tr>
+          <tr><td><a href="../week2/ex7.html">week2/ex7.html</a></td><td>88</td><td>100</td><td>document-title, html-has-lang</td></tr>
+          <tr><td><a href="../week3/ex4.html">week3/ex4.html</a></td><td>93</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex6.html">week3/ex6.html</a></td><td>93</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex1.html">week3/ex1.html</a></td><td>94</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex2.html">week3/ex2.html</a></td><td>94</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex5.html">week3/ex5.html</a></td><td>94</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex7.html">week3/ex7.html</a></td><td>94</td><td>100</td><td>document-title</td></tr>
+          <tr><td><a href="../week3/ex8.html">week3/ex8.html</a></td><td>94</td><td>100</td><td>color-contrast</td></tr>
           </tbody>
         </table>
       </div>
