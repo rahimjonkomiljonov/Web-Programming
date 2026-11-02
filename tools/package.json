@@ -1,0 +1,7 @@
+{
+  "name": "web-programming-tools",
+  "private": true,
+  "type": "module",
+  "scripts": { "build": "node build-css.mjs" },
+  "devDependencies": { "lightningcss": "^1.27.0" }
+}
