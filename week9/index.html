@@ -9,28 +9,6 @@
   <link rel="preload" href="../assets/fonts/IBMPlexSans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/frame.css">
   <link rel="stylesheet" href="../assets/site.css">
-  <style>
-    .shots-card { padding: 22px 22px 26px; }
-    .shots-card h3 { margin-bottom: 4px; }
-    .shots-card .muted { margin-bottom: 16px; }
-    .shots-card .shots img { box-shadow: none; }
-
-    .fix { padding: 24px; }
-    .fix-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-bottom: 14px; }
-    .fix-num { padding: 3px 9px; border: var(--stroke); border-radius: 6px; background: var(--marker); font: 600 0.8rem/1.3 var(--font-mono); }
-    .fix-head h3 { margin: 0; flex: 1 1 220px; font-size: 1.25rem; }
-    .fix-audit { padding: 3px 10px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--muted); font: 500 0.78rem/1.4 var(--font-mono); }
-    .fix p { margin-bottom: 10px; }
-    .fix-pages { color: var(--muted); }
-    .diff { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
-    .diff-side figcaption { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0; padding: 8px 12px; border: var(--stroke); border-bottom: 0; border-radius: 8px 8px 0 0; font: 600 0.78rem/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
-    .diff-side figcaption code { padding: 0; border: 0; background: none; text-transform: none; letter-spacing: 0; font-weight: 500; color: var(--muted); }
-    .diff-side.bad figcaption { background: #f9d9d5; }
-    .diff-side.good figcaption { background: #d5ecdd; }
-    .diff-side pre { flex: 1; overflow-y: hidden; margin: 0; border: var(--stroke); border-radius: 0 0 8px 8px; font-size: 0.8rem; }
-    .diff-side { display: flex; flex-direction: column; min-width: 0; }
-    @media (max-width: 760px) { .diff { grid-template-columns: minmax(0, 1fr); } }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -43,8 +21,14 @@
     <div class="page-head">
       <p class="eyebrow">K0126002 · Week 09 · Homework</p>
       <h1>Accessibility <span class="marker">Audit</span></h1>
-      <p class="intro">I ran Lighthouse (Accessibility) in Chrome DevTools on my site and fixed the pages that didn't score 100.</p>
+      <p class="intro">I ran Lighthouse (Accessibility) in Chrome DevTools on my site and fixed the pages that didn't score 100. This is the first Week 9 homework.</p>
     </div>
+
+    <aside class="callout" aria-labelledby="part2-heading">
+      <h2 id="part2-heading">Part 2: Performance</h2>
+      <p>I also ran a Lighthouse Performance audit and sped up the site.</p>
+      <a href="performance.html">Open the performance report <span aria-hidden="true">→</span></a>
+    </aside>
 
     <h2 class="section-title">What I found</h2>
     <p>12 pages scored below 100 on my Week 2 and Week 3 exercises. The screenshots below are from my own Chrome, on the live site, and the URL is in the address bar of each one. Both the before and after screenshots use the same URLs.</p>
