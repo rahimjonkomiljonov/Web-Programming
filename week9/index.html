@@ -11,7 +11,7 @@
     section { margin-bottom: 28px; }
     figure { margin: 0; }
     figcaption { margin-top: 6px; color: #587078; font-size: 0.9rem; }
-    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
     .shots img { border: 1px solid #cbd9d7; border-radius: 6px; width: 100%; height: auto; }
     code { background: #e1ebe8; padding: 1px 5px; border-radius: 4px; }
   </style>
@@ -20,120 +20,53 @@
   <main>
     <span class="eyebrow">K0126002 · WEEK 09 · HOMEWORK</span>
     <h1>Accessibility Audit</h1>
-    <p class="intro">I ran Lighthouse (Accessibility only) on every page of my site and fixed the ones that didn't score 100.</p>
+    <p class="intro">I ran Lighthouse (Accessibility) in Chrome DevTools on my site and fixed the pages that didn't score 100.</p>
 
     <h2>What I found</h2>
-    <p>12 of the 48 pages scored below 100. Everything else was already at 100. The screenshots below are the real Lighthouse reports. The URL is at the top of each one.</p>
-    <p>The "before" screenshots say <code>localhost</code> because I ran them on my old code before I fixed it, and that version was never online. The "after" screenshots are from the live site.</p>
+    <p>12 pages scored below 100 on my Week 2 and Week 3 exercises. The screenshots below are from my own Chrome, on the live site, and the URL is in the address bar of each one. Both the before and after screenshots use the same URLs.</p>
+    <p>I took screenshots for 4 pages. The other 8 pages (week2/ex4, week2/ex7, week3/ex1, ex2, ex4, ex5, ex6 and ex7) had the same missing title problem, and the Week 2 ones also had no lang. They score 100 now too.</p>
 
     <h2>What I fixed</h2>
     <ul>
       <li><strong>Missing page title:</strong> added a <code>&lt;title&gt;</code> to 11 pages. Four Week 2 pages had no <code>&lt;head&gt;</code> at all, so I turned them into full pages.</li>
       <li><strong>Missing language:</strong> added <code>lang="en"</code> to those four Week 2 pages.</li>
+      <li><strong>No main landmark:</strong> wrapped the page content in a <code>&lt;main&gt;</code> tag.</li>
       <li><strong>Low contrast:</strong> the white text on the colour boxes in week3/ex3 was too light, so I made it black. The footer in week3/ex8 was too dark, so I made it lighter.</li>
       <li><strong>Small links:</strong> the menu links in week2/ex3 were too small to tap, so I made them bigger.</li>
-      <li><strong>Skip link:</strong> I added a "Skip to main content" link. It shows up when you press <kbd>Tab</kbd>.</li>
+      <li><strong>Skip link:</strong> I added a "Skip to main content" link to every page. It shows up when you press <kbd>Tab</kbd>.</li>
     </ul>
-    <figure class="card">
-      <img src="img/skip-link-focused.png" alt="The home page after pressing Tab once, with a Skip to main content link at the top left" style="max-width: 560px; width: 100%; height: auto;">
-      <figcaption>The skip link on the live home page after pressing Tab.</figcaption>
-    </figure>
 
-    <h2>Scores for every page I changed</h2>
+    <h2>Before and after</h2>
     <section>
-      <h3>week2/ex2.html: 86 → 100</h3>
-      <p class="muted">Problem: no title, no lang.</p>
+      <h3>week2/ex2.html: 84 → 100</h3>
+      <p class="muted">Problem: no title, no lang, no main landmark.</p>
       <div class="shots">
-        <figure><img src="img/before-week2-ex2.png" alt="Lighthouse report for week2/ex2.html before the fix, score 86"><figcaption>Before (86)</figcaption></figure>
-        <figure><img src="img/after-week2-ex2.png" alt="Lighthouse report for week2/ex2.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
+        <figure><img src="img/before-week2-ex2.png" alt="Lighthouse in Chrome DevTools on week2/ex2.html before the fix, accessibility 84"><figcaption>Before (84)</figcaption></figure>
+        <figure><img src="img/after-week2-ex2.png" alt="Lighthouse in Chrome DevTools on week2/ex2.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
     <section>
-      <h3>week2/ex3.html: 81 → 100</h3>
-      <p class="muted">Problem: no title, no lang, links too small.</p>
+      <h3>week2/ex3.html: 79 → 100</h3>
+      <p class="muted">Problem: no title, no lang, links too small, no main landmark.</p>
       <div class="shots">
-        <figure><img src="img/before-week2-ex3.png" alt="Lighthouse report for week2/ex3.html before the fix, score 81"><figcaption>Before (81)</figcaption></figure>
-        <figure><img src="img/after-week2-ex3.png" alt="Lighthouse report for week2/ex3.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
+        <figure><img src="img/before-week2-ex3.png" alt="Lighthouse in Chrome DevTools on week2/ex3.html before the fix, accessibility 79"><figcaption>Before (79)</figcaption></figure>
+        <figure><img src="img/after-week2-ex3.png" alt="Lighthouse in Chrome DevTools on week2/ex3.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
     <section>
-      <h3>week2/ex4.html: 87 → 100</h3>
-      <p class="muted">Problem: no title, no lang.</p>
+      <h3>week3/ex3.html: 84 → 100</h3>
+      <p class="muted">Problem: low contrast, no title, no main landmark.</p>
       <div class="shots">
-        <figure><img src="img/before-week2-ex4.png" alt="Lighthouse report for week2/ex4.html before the fix, score 87"><figcaption>Before (87)</figcaption></figure>
-        <figure><img src="img/after-week2-ex4.png" alt="Lighthouse report for week2/ex4.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
+        <figure><img src="img/before-week3-ex3.png" alt="Lighthouse in Chrome DevTools on week3/ex3.html before the fix, accessibility 84"><figcaption>Before (84)</figcaption></figure>
+        <figure><img src="img/after-week3-ex3.png" alt="Lighthouse in Chrome DevTools on week3/ex3.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
     <section>
-      <h3>week2/ex7.html: 88 → 100</h3>
-      <p class="muted">Problem: no title, no lang.</p>
+      <h3>week3/ex8.html: 92 → 100</h3>
+      <p class="muted">Problem: low contrast in the footer.</p>
       <div class="shots">
-        <figure><img src="img/before-week2-ex7.png" alt="Lighthouse report for week2/ex7.html before the fix, score 88"><figcaption>Before (88)</figcaption></figure>
-        <figure><img src="img/after-week2-ex7.png" alt="Lighthouse report for week2/ex7.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex1.html: 94 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex1.png" alt="Lighthouse report for week3/ex1.html before the fix, score 94"><figcaption>Before (94)</figcaption></figure>
-        <figure><img src="img/after-week3-ex1.png" alt="Lighthouse report for week3/ex1.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex2.html: 94 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex2.png" alt="Lighthouse report for week3/ex2.html before the fix, score 94"><figcaption>Before (94)</figcaption></figure>
-        <figure><img src="img/after-week3-ex2.png" alt="Lighthouse report for week3/ex2.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex3.html: 87 → 100</h3>
-      <p class="muted">Problem: low contrast, no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex3.png" alt="Lighthouse report for week3/ex3.html before the fix, score 87"><figcaption>Before (87)</figcaption></figure>
-        <figure><img src="img/after-week3-ex3.png" alt="Lighthouse report for week3/ex3.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex4.html: 93 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex4.png" alt="Lighthouse report for week3/ex4.html before the fix, score 93"><figcaption>Before (93)</figcaption></figure>
-        <figure><img src="img/after-week3-ex4.png" alt="Lighthouse report for week3/ex4.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex5.html: 94 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex5.png" alt="Lighthouse report for week3/ex5.html before the fix, score 94"><figcaption>Before (94)</figcaption></figure>
-        <figure><img src="img/after-week3-ex5.png" alt="Lighthouse report for week3/ex5.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex6.html: 93 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex6.png" alt="Lighthouse report for week3/ex6.html before the fix, score 93"><figcaption>Before (93)</figcaption></figure>
-        <figure><img src="img/after-week3-ex6.png" alt="Lighthouse report for week3/ex6.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex7.html: 94 → 100</h3>
-      <p class="muted">Problem: no title.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex7.png" alt="Lighthouse report for week3/ex7.html before the fix, score 94"><figcaption>Before (94)</figcaption></figure>
-        <figure><img src="img/after-week3-ex7.png" alt="Lighthouse report for week3/ex7.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
-      </div>
-    </section>
-    <section>
-      <h3>week3/ex8.html: 94 → 100</h3>
-      <p class="muted">Problem: low contrast.</p>
-      <div class="shots">
-        <figure><img src="img/before-week3-ex8.png" alt="Lighthouse report for week3/ex8.html before the fix, score 94"><figcaption>Before (94)</figcaption></figure>
-        <figure><img src="img/after-week3-ex8.png" alt="Lighthouse report for week3/ex8.html after the fix, score 100"><figcaption>After (100)</figcaption></figure>
+        <figure><img src="img/before-week3-ex8.png" alt="Lighthouse in Chrome DevTools on week3/ex8.html before the fix, accessibility 92"><figcaption>Before (92)</figcaption></figure>
+        <figure><img src="img/after-week3-ex8.png" alt="Lighthouse in Chrome DevTools on week3/ex8.html after the fix, accessibility 100"><figcaption>After (100)</figcaption></figure>
       </div>
     </section>
   </main>
