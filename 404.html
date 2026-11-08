@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f6f1e7">
+  <title>Page not found | Web Programming</title>
+  <!-- GitHub Pages serves this file for any missing URL, at any depth, so every path below is relative to this base -->
+  <base href="/Web-Programming/">
+  <link rel="preload" href="assets/fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/IBMPlexSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/frame.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .nf-code { margin: 0 0 6px; font: 700 clamp(5rem, 22vw, 9rem)/0.9 var(--font-display); letter-spacing: -0.05em; }
+    .nf-code span { color: var(--accent); }
+    .nf-path { max-width: 100%; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body class="pw-760">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <span aria-current="page">404</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="eyebrow">Page not found</p>
+    <p class="nf-code" aria-hidden="true">4<span>0</span>4</p>
+    <h1>That page doesn't exist</h1>
+    <p class="intro">I couldn't find <code id="missing-path" class="nf-path">this address</code> on my course site. It may have moved, or the link may have a typo.</p>
+    <div class="actions">
+      <a class="btn" href="index.html">Back to the home page</a>
+      <a class="btn alt" href="week10/index.html">Week 10</a>
+      <a class="btn alt" href="week9/index.html">Week 9</a>
+    </div>
+  </main>
+  <script src="site-nav.js" defer></script>
+  <script>
+    // Show which address was missing, so the visitor can spot a typo
+    document.getElementById('missing-path').textContent = location.pathname;
+  </script>
+</body>
+</html>
