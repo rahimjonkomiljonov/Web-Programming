@@ -47,8 +47,10 @@
         <span class="fix-audit">Greeting.jsx</span>
       </header>
       <p><strong>Goal:</strong> write one function that returns JSX and use it more than once.</p>
-      <div class="split">
-        <pre><code>// The simplest possible component: a function that returns JSX.
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>Greeting.jsx</code></figcaption>
+          <pre><code>// The simplest possible component: a function that returns JSX.
 // Used three times by its parent, so the same function gives three independent copies.
 function Greeting() {
   return &lt;p className=&quot;greeting&quot;&gt;Hello, World!&lt;/p&gt;;
@@ -60,10 +62,11 @@ export default Greeting;
 &lt;Greeting /&gt;
 &lt;Greeting /&gt;
 &lt;Greeting /&gt;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=first-component" title="Running result of Your first component" loading="lazy" height="220" data-demo="first-component"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=first-component" title="Running output of Your first component" loading="lazy" height="220" data-demo="first-component"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> three separate &ldquo;Hello, World!&rdquo; lines, one per use of the component. <a href="practice/index.html#first-component">Open it on the practice page</a>.</p>
     </article>
@@ -74,8 +77,10 @@ export default Greeting;
         <span class="fix-audit">StudentCard.jsx</span>
       </header>
       <p><strong>Goal:</strong> complete the card so it works as <code>&lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;</code>, and add a second card with my own student ID.</p>
-      <div class="split">
-        <pre><code>// Monday lab challenge: &quot;fill in the blanks&quot;
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>StudentCard.jsx</code></figcaption>
+          <pre><code>// Monday lab challenge: &quot;fill in the blanks&quot;
 //   function StudentCard( ____ ) { ... &lt;h2&gt;{____}&lt;/h2&gt; &lt;p&gt;ID: {____}&lt;/p&gt; &lt;p&gt;Major: {____}&lt;/p&gt; ... }
 // It must work like this:  &lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;
 function StudentCard({ name, id, major }) {
@@ -93,10 +98,11 @@ export default StudentCard;
 // App.jsx
 &lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;
 &lt;StudentCard name=&quot;Rahimjon Komiljonov&quot; id=&quot;202438377&quot; major=&quot;Computer Engineering&quot; /&gt;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=student-card" title="Running result of StudentCard (fill in the blanks)" loading="lazy" height="220" data-demo="student-card"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=student-card" title="Running output of StudentCard (fill in the blanks)" loading="lazy" height="220" data-demo="student-card"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> two cards, the second one showing my ID <code>202438377</code>. <a href="practice/index.html#student-card">Open it on the practice page</a>.</p>
     </article>
@@ -107,8 +113,10 @@ export default StudentCard;
         <span class="fix-audit">ProfileCard.jsx</span>
       </header>
       <p><strong>Goal:</strong> build a card with <code>name</code>, <code>role</code>, <code>email</code> and an optional <code>avatarUrl</code> that has a default value.</p>
-      <div class="split">
-        <pre><code>// Study guide, exercise 1: a ProfileCard with name, role, email and an optional avatarUrl.
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>ProfileCard.jsx</code></figcaption>
+          <pre><code>// Study guide, exercise 1: a ProfileCard with name, role, email and an optional avatarUrl.
 // avatarUrl has a default value, so the card still works when the parent does not pass one.
 // (The guide&#x27;s default pointed at via.placeholder.com, which no longer exists, so the default
 // here is a small grey person drawn as an inline SVG.)
@@ -137,10 +145,11 @@ export default ProfileCard;
 // App.jsx
 &lt;ProfileCard name=&quot;Dr. Toshpulatov&quot; role=&quot;Professor&quot; email=&quot;muhiddin@gachon.ac.kr&quot; /&gt;
 &lt;ProfileCard name=&quot;Rahimjon Komiljonov&quot; role=&quot;Computer Engineering student&quot; email=&quot;rahimjon4753@gmail.com&quot; avatarUrl={myPhoto} /&gt;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=profile-card" title="Running result of ProfileCard with a default prop" loading="lazy" height="220" data-demo="profile-card"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=profile-card" title="Running output of ProfileCard with a default prop" loading="lazy" height="220" data-demo="profile-card"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> the first card uses the default avatar because no <code>avatarUrl</code> is passed; the second shows my photo. The guide's default image link (<code>via.placeholder.com</code>) no longer works, so the default is a small grey person drawn as an inline SVG. <a href="practice/index.html#profile-card">Open it on the practice page</a>.</p>
     </article>
@@ -151,8 +160,10 @@ export default ProfileCard;
         <span class="fix-audit">NotificationList.jsx</span>
       </header>
       <p><strong>Goal:</strong> render an array of notifications with <code>.map()</code>, a stable <code>key</code> and an icon chosen by conditional rendering.</p>
-      <div class="split">
-        <pre><code>// Study guide, exercise 2: render a list of notifications with conditional icons.
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>NotificationList.jsx</code></figcaption>
+          <pre><code>// Study guide, exercise 2: render a list of notifications with conditional icons.
 //   success -&gt; check mark, warning -&gt; warning sign, anything else -&gt; info.
 // Each item gets a stable key from its id (never the array index).
 const notifications = [
@@ -183,10 +194,11 @@ function NotificationList() {
 }
 
 export default NotificationList;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=notifications" title="Running result of List of notifications" loading="lazy" height="220" data-demo="notifications"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=notifications" title="Running output of List of notifications" loading="lazy" height="220" data-demo="notifications"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> three notifications with a check mark, a warning sign and an info icon. The key is each item's <code>id</code>, not its position. <a href="practice/index.html#notifications">Open it on the practice page</a>.</p>
     </article>
@@ -197,8 +209,10 @@ export default NotificationList;</code></pre>
         <span class="fix-audit">Card.jsx</span>
       </header>
       <p><strong>Goal:</strong> make one reusable <code>Card</code> that wraps whatever is placed between its tags.</p>
-      <div class="split">
-        <pre><code>// Study guide, exercise 3: a reusable wrapper. It takes a title prop and shows whatever
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>Card.jsx</code></figcaption>
+          <pre><code>// Study guide, exercise 3: a reusable wrapper. It takes a title prop and shows whatever
 // is placed between &lt;Card&gt; and &lt;/Card&gt; through props.children.
 function Card({ title, children }) {
   return (
@@ -221,10 +235,11 @@ export default Card;
 &lt;Card title=&quot;Homework&quot;&gt;
   &lt;p&gt;Build a student portfolio component&lt;/p&gt;
 &lt;/Card&gt;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=children" title="Running result of Layout with props.children" loading="lazy" height="220" data-demo="children"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=children" title="Running output of Layout with props.children" loading="lazy" height="220" data-demo="children"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> the same component shows a list in one card and a paragraph in the other. <a href="practice/index.html#children">Open it on the practice page</a>.</p>
     </article>
@@ -235,8 +250,10 @@ export default Card;
         <span class="fix-audit">ProductCard.jsx</span>
       </header>
       <p><strong>Goal:</strong> build a <code>ProductCard</code> with <code>name</code>, <code>price</code>, <code>rating</code> and <code>inStock</code>. Bonus 1: show the rating as &ldquo;4.5 / 5 stars&rdquo;. Bonus 2: show an &ldquo;Out of Stock&rdquo; label when <code>inStock</code> is false.</p>
-      <div class="split">
-        <pre><code>// In-class code challenge: build a ProductCard.
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>ProductCard.jsx</code></figcaption>
+          <pre><code>// In-class code challenge: build a ProductCard.
 // Props: name (string), price (number, KRW), rating (number, 0 to 5), inStock (boolean).
 // Bonus 1: show the rating as &quot;4.5 / 5 stars&quot;.
 // Bonus 2: show an &quot;Out of Stock&quot; label when inStock is false.
@@ -274,10 +291,11 @@ export default ProductCard;
 &lt;ProductCard name=&quot;Wireless Earbuds&quot; price={89000} rating={4.5} inStock={true} /&gt;
 &lt;ProductCard name=&quot;Mechanical Keyboard&quot; price={129000} rating={4} inStock={true} /&gt;
 &lt;ProductCard name=&quot;USB-C Hub&quot; price={45000} rating={3.5} inStock={false} /&gt;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=product-card" title="Running result of ProductCard code challenge" loading="lazy" height="220" data-demo="product-card"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=product-card" title="Running output of ProductCard code challenge" loading="lazy" height="220" data-demo="product-card"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> three cards. Prices are formatted in won (<code>89,000원</code>), the ratings read &ldquo;4.5 / 5 stars&rdquo;, and the USB-C Hub shows &ldquo;Out of Stock&rdquo; and is greyed out. Both bonuses are done. <a href="practice/index.html#product-card">Open it on the practice page</a>.</p>
     </article>
@@ -288,8 +306,10 @@ export default ProductCard;
         <span class="fix-audit">StudentList.jsx</span>
       </header>
       <p><strong>Goal:</strong> render an array with <code>.map()</code> and give every item a unique, stable <code>key</code>.</p>
-      <div class="split">
-        <pre><code>// Lecture example: render a list with .map() and a unique, stable key on every item.
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>StudentList.jsx</code></figcaption>
+          <pre><code>// Lecture example: render a list with .map() and a unique, stable key on every item.
 const students = [
   { id: 1, name: &#x27;Lee Jungwoo&#x27;, grade: &#x27;A&#x27; },
   { id: 2, name: &#x27;Park Sohee&#x27;, grade: &#x27;B+&#x27; },
@@ -309,10 +329,11 @@ function StudentList() {
 }
 
 export default StudentList;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=lists" title="Running result of Rendering a list with keys" loading="lazy" height="220" data-demo="lists"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=lists" title="Running output of Rendering a list with keys" loading="lazy" height="220" data-demo="lists"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> three students listed, each keyed by its <code>id</code>. <a href="practice/index.html#lists">Open it on the practice page</a>.</p>
     </article>
@@ -323,8 +344,10 @@ export default StudentList;</code></pre>
         <span class="fix-audit">ConditionalDemo.jsx</span>
       </header>
       <p><strong>Goal:</strong> show different content depending on state: return <code>null</code>, use <code>&amp;&amp;</code> and use a ternary.</p>
-      <div class="split">
-        <pre><code>import { useState } from &#x27;react&#x27;;
+      <div class="diff">
+        <figure class="diff-side code">
+          <figcaption>Code <code>ConditionalDemo.jsx</code></figcaption>
+          <pre><code>import { useState } from &#x27;react&#x27;;
 
 // Lecture example: conditional rendering three ways.
 //   Alert      -&gt; returns null to render nothing when there is no message
@@ -366,10 +389,11 @@ function ConditionalDemo() {
 }
 
 export default ConditionalDemo;</code></pre>
-        <div class="split-result">
-          <p class="split-label">Result (running)</p>
-          <iframe src="practice/index.html?demo=conditional" title="Running result of Conditional rendering" loading="lazy" height="220" data-demo="conditional"></iframe>
-        </div>
+        </figure>
+        <figure class="diff-side good">
+          <figcaption>Output <code>running</code></figcaption>
+          <div class="diff-out"><iframe src="practice/index.html?demo=conditional" title="Running output of Conditional rendering" loading="lazy" height="220" data-demo="conditional"></iframe></div>
+        </figure>
       </div>
       <p><strong>Result:</strong> with nobody logged in the page shows the error and &ldquo;Please log in.&rdquo;; the button logs in and the page shows the success message and &ldquo;Welcome, Rahimjon!&rdquo;. This is the only place I needed <code>useState</code>, to flip between the two states. <a href="practice/index.html#conditional">Open it on the practice page</a>.</p>
     </article>
