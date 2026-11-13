@@ -21,35 +21,310 @@
     <div class="page-head">
       <p class="eyebrow">K0126002 · Week 11 · React components and props</p>
       <h1>React <span class="marker">components</span> &amp; props</h1>
-      <p class="intro">The homework and the practice exercises from the Monday lab and the Friday class, done on November 13, 2026. Both apps are built with Vite and React; the built pages are in this folder and the source (JSX, CSS and the Vite config) is in <code>week11/source</code> in the repository.</p>
+      <p class="intro">The homework and the practice exercises from class. I did them on November 13, 2026, after the class sessions. The apps are built with Vite and React; the built pages are in this folder and the source is in <code>week11/source</code>. The quizzes and the in-class activity code are separate and not part of this page.</p>
     </div>
 
     <h2 class="section-title">Homework</h2>
     <div>
       <article class="card">
         <h3>Portfolio gallery</h3>
-        <p>The Friday homework: a <code>ProjectCard</code> (title, description, tech stack, GitHub link, demo link), a <code>ProjectList</code> that renders six cards from an array, and a <code>FilterBar</code> that filters them by technology using <code>useState</code>. The projects are my real public repositories.</p>
-        <div class="actions"><a class="btn" href="portfolio-gallery/index.html">Open the gallery</a></div>
+        <p>The Friday homework: a <code>ProjectCard</code> (title, description, tech stack, GitHub link, demo link), a <code>ProjectList</code> that renders six cards from an array, and a <code>FilterBar</code> that filters them by technology with <code>useState</code>. The projects are my real public repositories.</p>
+        <div class="actions"><a class="btn alt" href="portfolio-gallery/index.html">Live app</a><a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/tree/main/week11/source/portfolio-gallery" target="_blank" rel="noopener noreferrer">Source<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </article>
+      <article class="card">
+        <h3>Task 11-A: Student Directory</h3>
+        <p>A <code>StudentProfileCard</code> component with five props (<code>name</code>, <code>studentId</code>, <code>major</code>, <code>year</code>, <code>gpa</code>), used for three students and styled with my own CSS. It has its own repository with four commits and a GitHub Pages deployment, as the task asks.</p>
+        <div class="actions"><a class="btn alt" href="https://rahimjonkomiljonov.github.io/task11/" target="_blank" rel="noopener noreferrer">Live site<span class="visually-hidden"> (opens in a new tab)</span></a><a class="btn alt" href="https://github.com/rahimjonkomiljonov/task11" target="_blank" rel="noopener noreferrer">Repository<span class="visually-hidden"> (opens in a new tab)</span></a></div>
       </article>
     </div>
 
-    <h2 class="section-title">Class practice</h2>
-    <p>Every exercise from the Monday lab and the Friday study guide, as small components on one page: the first component, <code>StudentCard</code>, <code>ProfileCard</code> with a default prop, the notification list, <code>props.children</code>, <code>ProductCard</code> (with both bonuses), lists with keys and conditional rendering.</p>
-    <div>
-      <article class="card">
-        <h3>All the practice components</h3>
-        <p>Each section on the page says which exercise it comes from. The quizzes and the in-class activity code are not part of this page.</p>
-        <div class="actions"><a class="btn" href="practice/index.html">Open the practice page</a></div>
-      </article>
-    </div>
-    <h2 class="section-title">Task 11-A</h2>
-    <div>
-      <article class="card">
-        <h3>Student Directory</h3>
-        <p>The Friday task: a <code>StudentProfileCard</code> component with five props (<code>name</code>, <code>studentId</code>, <code>major</code>, <code>year</code>, <code>gpa</code>), used for three students in <code>App.jsx</code> and styled with my own CSS.</p>
-        <div class="actions"><a class="btn" href="task11/index.html">Open the directory</a></div>
-      </article>
-    </div>
+    <h2 class="section-title">Class practice: components, props and rendering</h2>
+    <p>The exercises from the lectures, the lab and the study guide. Each one is a small component in its own file; the code below is copied from the files, and every card has a link to the running version on <a href="practice/index.html">the practice page</a>.</p>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E1</span>
+        <h3>Your first component</h3>
+        <span class="fix-audit">Greeting.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> write one function that returns JSX and use it more than once.</p>
+      <pre><code>// The simplest possible component: a function that returns JSX.
+// Used three times by its parent, so the same function gives three independent copies.
+function Greeting() {
+  return &lt;p className=&quot;greeting&quot;&gt;Hello, World!&lt;/p&gt;;
+}
+
+export default Greeting;
+
+// App.jsx
+&lt;Greeting /&gt;
+&lt;Greeting /&gt;
+&lt;Greeting /&gt;</code></pre>
+      <p><strong>Result:</strong> three separate &ldquo;Hello, World!&rdquo; lines, one per use of the component. <a href="practice/index.html#first-component">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E2</span>
+        <h3>StudentCard (fill in the blanks)</h3>
+        <span class="fix-audit">StudentCard.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> complete the card so it works as <code>&lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;</code>, and add a second card with my own student ID.</p>
+      <pre><code>// Monday lab challenge: &quot;fill in the blanks&quot;
+//   function StudentCard( ____ ) { ... &lt;h2&gt;{____}&lt;/h2&gt; &lt;p&gt;ID: {____}&lt;/p&gt; &lt;p&gt;Major: {____}&lt;/p&gt; ... }
+// It must work like this:  &lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;
+function StudentCard({ name, id, major }) {
+  return (
+    &lt;div className=&quot;card student-card&quot;&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;ID: {id}&lt;/p&gt;
+      &lt;p&gt;Major: {major}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default StudentCard;
+
+// App.jsx
+&lt;StudentCard name=&quot;Alice&quot; id=&quot;20231234&quot; major=&quot;CS&quot; /&gt;
+&lt;StudentCard name=&quot;Rahimjon Komiljonov&quot; id=&quot;202438377&quot; major=&quot;Computer Engineering&quot; /&gt;</code></pre>
+      <p><strong>Result:</strong> two cards, the second one showing my ID <code>202438377</code>. <a href="practice/index.html#student-card">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E3</span>
+        <h3>ProfileCard with a default prop</h3>
+        <span class="fix-audit">ProfileCard.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> build a card with <code>name</code>, <code>role</code>, <code>email</code> and an optional <code>avatarUrl</code> that has a default value.</p>
+      <pre><code>// Study guide, exercise 1: a ProfileCard with name, role, email and an optional avatarUrl.
+// avatarUrl has a default value, so the card still works when the parent does not pass one.
+// (The guide&#x27;s default pointed at via.placeholder.com, which no longer exists, so the default
+// here is a small grey person drawn as an inline SVG.)
+const DEFAULT_AVATAR =
+  &#x27;data:image/svg+xml,&#x27; +
+  encodeURIComponent(
+    &#x27;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 80 80&quot;&gt;&#x27; +
+      &#x27;&lt;rect width=&quot;80&quot; height=&quot;80&quot; fill=&quot;#ddd3bf&quot;/&gt;&#x27; +
+      &#x27;&lt;circle cx=&quot;40&quot; cy=&quot;31&quot; r=&quot;14&quot; fill=&quot;#5c564a&quot;/&gt;&#x27; +
+      &#x27;&lt;path d=&quot;M12 80c2-18 14-28 28-28s26 10 28 28z&quot; fill=&quot;#5c564a&quot;/&gt;&lt;/svg&gt;&#x27;,
+  );
+
+function ProfileCard({ name, role, email, avatarUrl = DEFAULT_AVATAR }) {
+  return (
+    &lt;div className=&quot;card profile-card&quot;&gt;
+      &lt;img className=&quot;avatar&quot; src={avatarUrl} alt={name} width=&quot;80&quot; height=&quot;80&quot; /&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;{role}&lt;/p&gt;
+      &lt;a href={`mailto:${email}`}&gt;{email}&lt;/a&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default ProfileCard;
+
+// App.jsx
+&lt;ProfileCard name=&quot;Dr. Toshpulatov&quot; role=&quot;Professor&quot; email=&quot;muhiddin@gachon.ac.kr&quot; /&gt;
+&lt;ProfileCard name=&quot;Rahimjon Komiljonov&quot; role=&quot;Computer Engineering student&quot; email=&quot;rahimjon4753@gmail.com&quot; avatarUrl={myPhoto} /&gt;</code></pre>
+      <p><strong>Result:</strong> the first card uses the default avatar because no <code>avatarUrl</code> is passed; the second shows my photo. The guide's default image link (<code>via.placeholder.com</code>) no longer works, so the default is a small grey person drawn as an inline SVG. <a href="practice/index.html#profile-card">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E4</span>
+        <h3>List of notifications</h3>
+        <span class="fix-audit">NotificationList.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> render an array of notifications with <code>.map()</code>, a stable <code>key</code> and an icon chosen by conditional rendering.</p>
+      <pre><code>// Study guide, exercise 2: render a list of notifications with conditional icons.
+//   success -&gt; check mark, warning -&gt; warning sign, anything else -&gt; info.
+// Each item gets a stable key from its id (never the array index).
+const notifications = [
+  { id: 1, type: &#x27;success&#x27;, message: &#x27;Profile updated successfully&#x27; },
+  { id: 2, type: &#x27;warning&#x27;, message: &#x27;Password expires in 3 days&#x27; },
+  { id: 3, type: &#x27;info&#x27;, message: &#x27;New lecture materials available&#x27; },
+];
+
+function NotificationItem({ type, message }) {
+  const icon = type === &#x27;success&#x27; ? &#x27;✅&#x27; : type === &#x27;warning&#x27; ? &#x27;⚠️&#x27; : &#x27;ℹ️&#x27;;
+  return (
+    &lt;li className={`notification notification-${type}`}&gt;
+      &lt;span aria-hidden=&quot;true&quot;&gt;{icon}&lt;/span&gt;
+      &lt;span className=&quot;sr-only&quot;&gt;{type}: &lt;/span&gt;
+      {message}
+    &lt;/li&gt;
+  );
+}
+
+function NotificationList() {
+  return (
+    &lt;ul className=&quot;notifications&quot;&gt;
+      {notifications.map((n) =&gt; (
+        &lt;NotificationItem key={n.id} type={n.type} message={n.message} /&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+export default NotificationList;</code></pre>
+      <p><strong>Result:</strong> three notifications with a check mark, a warning sign and an info icon. The key is each item's <code>id</code>, not its position. <a href="practice/index.html#notifications">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E5</span>
+        <h3>Layout with props.children</h3>
+        <span class="fix-audit">Card.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> make one reusable <code>Card</code> that wraps whatever is placed between its tags.</p>
+      <pre><code>// Study guide, exercise 3: a reusable wrapper. It takes a title prop and shows whatever
+// is placed between &lt;Card&gt; and &lt;/Card&gt; through props.children.
+function Card({ title, children }) {
+  return (
+    &lt;section className=&quot;card wrapper-card&quot;&gt;
+      &lt;h3 className=&quot;card-title&quot;&gt;{title}&lt;/h3&gt;
+      &lt;div className=&quot;card-body&quot;&gt;{children}&lt;/div&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default Card;
+
+// App.jsx
+&lt;Card title=&quot;Lecture Topics&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Components&lt;/li&gt;
+    &lt;li&gt;Props&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/Card&gt;
+&lt;Card title=&quot;Homework&quot;&gt;
+  &lt;p&gt;Build a student portfolio component&lt;/p&gt;
+&lt;/Card&gt;</code></pre>
+      <p><strong>Result:</strong> the same component shows a list in one card and a paragraph in the other. <a href="practice/index.html#children">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E6</span>
+        <h3>ProductCard code challenge</h3>
+        <span class="fix-audit">ProductCard.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> build a <code>ProductCard</code> with <code>name</code>, <code>price</code>, <code>rating</code> and <code>inStock</code>. Bonus 1: show the rating as &ldquo;4.5 / 5 stars&rdquo;. Bonus 2: show an &ldquo;Out of Stock&rdquo; label when <code>inStock</code> is false.</p>
+      <pre><code>// In-class code challenge: build a ProductCard.
+// Props: name (string), price (number, KRW), rating (number, 0 to 5), inStock (boolean).
+// Bonus 1: show the rating as &quot;4.5 / 5 stars&quot;.
+// Bonus 2: show an &quot;Out of Stock&quot; label when inStock is false.
+function Stars({ rating }) {
+  const full = Math.floor(rating);
+  const half = rating - full &gt;= 0.5 ? 1 : 0;
+  const empty = 5 - full - half;
+  // the stars are only decoration: the words &quot;4.5 / 5 stars&quot; carry the meaning
+  return (
+    &lt;span className=&quot;stars&quot; aria-hidden=&quot;true&quot;&gt;
+      {&#x27;★&#x27;.repeat(full)}
+      {half ? &#x27;½&#x27; : &#x27;&#x27;}
+      {&#x27;☆&#x27;.repeat(empty)}
+    &lt;/span&gt;
+  );
+}
+
+function ProductCard({ name, price, rating, inStock }) {
+  return (
+    &lt;div className={inStock ? &#x27;card product-card&#x27; : &#x27;card product-card sold-out&#x27;}&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p className=&quot;price&quot;&gt;{price.toLocaleString(&#x27;ko-KR&#x27;)}원&lt;/p&gt;
+      &lt;Stars rating={rating} /&gt;
+      &lt;p className=&quot;rating&quot;&gt;{rating} / 5 stars&lt;/p&gt;
+      &lt;p className={inStock ? &#x27;stock in-stock&#x27; : &#x27;stock out-of-stock&#x27;}&gt;
+        {inStock ? &#x27;In Stock&#x27; : &#x27;Out of Stock&#x27;}
+      &lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default ProductCard;
+
+// App.jsx
+&lt;ProductCard name=&quot;Wireless Earbuds&quot; price={89000} rating={4.5} inStock={true} /&gt;
+&lt;ProductCard name=&quot;Mechanical Keyboard&quot; price={129000} rating={4} inStock={true} /&gt;
+&lt;ProductCard name=&quot;USB-C Hub&quot; price={45000} rating={3.5} inStock={false} /&gt;</code></pre>
+      <p><strong>Result:</strong> three cards. Prices are formatted in won (<code>89,000원</code>), the ratings read &ldquo;4.5 / 5 stars&rdquo;, and the USB-C Hub shows &ldquo;Out of Stock&rdquo; and is greyed out. Both bonuses are done. <a href="practice/index.html#product-card">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E7</span>
+        <h3>Rendering a list with keys</h3>
+        <span class="fix-audit">StudentList.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> render an array with <code>.map()</code> and give every item a unique, stable <code>key</code>.</p>
+      <pre><code>// Lecture example: render a list with .map() and a unique, stable key on every item.
+const students = [
+  { id: 1, name: &#x27;Lee Jungwoo&#x27;, grade: &#x27;A&#x27; },
+  { id: 2, name: &#x27;Park Sohee&#x27;, grade: &#x27;B+&#x27; },
+  { id: 3, name: &#x27;Kim Minho&#x27;, grade: &#x27;A-&#x27; },
+];
+
+function StudentList() {
+  return (
+    &lt;ul className=&quot;plain-list&quot;&gt;
+      {students.map((student) =&gt; (
+        &lt;li key={student.id}&gt;
+          {student.name} -- {student.grade}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+export default StudentList;</code></pre>
+      <p><strong>Result:</strong> three students listed, each keyed by its <code>id</code>. <a href="practice/index.html#lists">See it running</a>.</p>
+    </article>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">E8</span>
+        <h3>Conditional rendering</h3>
+        <span class="fix-audit">ConditionalDemo.jsx</span>
+      </header>
+      <p><strong>Goal:</strong> show different content depending on state: return <code>null</code>, use <code>&amp;&amp;</code> and use a ternary.</p>
+      <pre><code>import { useState } from &#x27;react&#x27;;
+
+// Lecture example: conditional rendering three ways.
+//   Alert      -&gt; returns null to render nothing when there is no message
+//   Dashboard  -&gt; &amp;&amp; shows a part only when its condition is true
+//   the button -&gt; a ternary picks one of two labels
+function Alert({ type, message }) {
+  if (!message) return null; // render nothing
+  return (
+    &lt;div className={`alert alert-${type}`} role=&quot;status&quot;&gt;
+      {type === &#x27;error&#x27; ? &#x27;ERROR:&#x27; : &#x27;OK:&#x27;} {message}
+    &lt;/div&gt;
+  );
+}
+
+function Dashboard({ user }) {
+  return (
+    &lt;div&gt;
+      {user &amp;&amp; &lt;p&gt;Welcome, {user.name}!&lt;/p&gt;}
+      {!user &amp;&amp; &lt;p&gt;Please log in.&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}
+
+// useState is only used here to flip the login state so both branches can be seen
+function ConditionalDemo() {
+  const [user, setUser] = useState(null);
+  return (
+    &lt;div&gt;
+      &lt;Alert type=&quot;error&quot; message={user ? &#x27;&#x27; : &#x27;You are not logged in.&#x27;} /&gt;
+      &lt;Alert type=&quot;success&quot; message={user ? &#x27;Logged in successfully.&#x27; : &#x27;&#x27;} /&gt;
+      &lt;div className=&quot;card&quot;&gt;
+        &lt;Dashboard user={user} /&gt;
+        &lt;button type=&quot;button&quot; onClick={() =&gt; setUser(user ? null : { name: &#x27;Rahimjon&#x27; })}&gt;
+          {user ? &#x27;Log out&#x27; : &#x27;Log in&#x27;}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default ConditionalDemo;</code></pre>
+      <p><strong>Result:</strong> with nobody logged in the page shows the error and &ldquo;Please log in.&rdquo;; the button logs in and the page shows the success message and &ldquo;Welcome, Rahimjon!&rdquo;. This is the only place I needed <code>useState</code>, to flip between the two states. <a href="practice/index.html#conditional">See it running</a>.</p>
+    </article>
   </main>
   <script src="../site-nav.js" defer></script>
 </body>
