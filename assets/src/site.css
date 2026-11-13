@@ -146,6 +146,7 @@ main > h2:not(.section-title) { margin: 44px 0 14px; }
 .tile.inverse h2, .tile.inverse .tile-go { color: var(--paper); }
 .tile.inverse p { color: #d8d0bd; }
 .tile.inverse { box-shadow: 4px 4px 0 var(--accent); }
+.tile.wide { grid-column: 1 / -1; min-height: 0; }
 .tile.inverse:hover { box-shadow: 6px 6px 0 var(--accent); }
 @media (max-width: 760px) { .tile-grid { grid-template-columns: 1fr; } .tile { min-height: 0; } }
 @media (min-width: 761px) and (max-width: 960px) { .tile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
