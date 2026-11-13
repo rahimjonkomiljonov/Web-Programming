@@ -93,3 +93,9 @@ button:hover { background: var(--accent-dark); }
 button:active { transform: translateY(3px); box-shadow: none; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* embed mode: one demo inside an iframe on the Week 11 page, no site header or navigation */
+html.embed .site-header, html.embed #wp-site-controls, html.embed #wp-site-footer, html.embed .skip-link { display: none !important; }
+html.embed body { padding-bottom: 0 !important; }
+html.embed body { background: var(--surface); }
+html.embed #root { width: auto; padding: 16px; }

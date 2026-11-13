@@ -300,3 +300,11 @@ figcaption { margin-top: 8px; color: var(--muted); font: 500 0.82rem/1.4 var(--f
 .diff-side.good figcaption { background: #d5ecdd; }
 .diff-side pre { flex: 1; overflow-y: hidden; margin: 0; border: var(--stroke); border-radius: 0 0 8px 8px; font-size: 0.8rem; }
 @media (max-width: 760px) { .diff { grid-template-columns: minmax(0, 1fr); } }
+
+/* code on the left, running result on the right (Week 11) */
+.split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 16px; align-items: start; margin: 0 0 14px; }
+.split pre { margin: 0; max-height: 520px; }
+.split-result { border: 1.5px solid var(--ink); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.split-label { margin: 0; padding: 6px 12px; border-bottom: 1.5px solid var(--ink); background: var(--marker); font: 600 0.75rem/1.4 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; }
+.split-result iframe { display: block; width: 100%; border: 0; background: var(--surface); }
+@media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }

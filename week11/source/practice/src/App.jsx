@@ -8,8 +8,14 @@ import StudentList from './components/StudentList.jsx';
 import ConditionalDemo from './components/ConditionalDemo.jsx';
 import myPhoto from './assets/rahimjon.jpg';
 
+// `?demo=<section id>` shows just that one demo with no page chrome. The Week 11 page embeds
+// each exercise this way, next to its code.
+const only = new URLSearchParams(window.location.search).get('demo');
+if (only) document.documentElement.classList.add('embed');
+
 // One small section per exercise. `from` says where in the course material it came from.
 function Section({ id, title, from, children, note }) {
+  if (only) return only === id ? <div className="demo">{children}</div> : null;
   return (
     <section className="section" id={id} aria-labelledby={`${id}-title`}>
       <p className="from">{from}</p>
@@ -23,6 +29,7 @@ function Section({ id, title, from, children, note }) {
 function App() {
   return (
     <>
+      {!only && (
       <header className="page-head">
         <p className="eyebrow">K0126002 · Week 11 · React components and props</p>
         <h1>
@@ -43,6 +50,7 @@ function App() {
           <a href="#conditional">Conditional rendering</a>
         </nav>
       </header>
+      )}
 
       <Section
         id="first-component"
