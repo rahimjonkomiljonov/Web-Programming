@@ -70,12 +70,6 @@
     .demo .stock.out { color: #a1281e; }
     .demo .sold-out { background: #f3f1ee; }
 
-    /* homework */
-    .tree { margin: 0; padding: 0; list-style: none; font: 500 0.9rem/1.5 var(--font-mono); }
-    .tree ul { margin: 4px 0 4px 10px; padding-left: 16px; border-left: 1.5px dashed var(--line); list-style: none; }
-    .tree li { margin: 4px 0; }
-    .tree li::marker { content: none; }
-    .tree span { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
   </style>
 </head>
 <body class="pw-980">
@@ -89,23 +83,21 @@
     <div class="page-head">
       <p class="eyebrow">K0126002 · Week 11 · React components and props</p>
       <h1>React Components &amp; <span class="marker">Props</span></h1>
-      <p class="intro">Every code example from the Friday lecture, the ProductCard code challenge and the Portfolio Gallery homework. Each exercise runs live on this page: the code next to the output is the exact code that renders it.</p>
+      <p class="intro">The Portfolio Gallery homework, then the practice from the Friday class: every code example from the lecture and the ProductCard code challenge.</p>
     </div>
 
-    <nav aria-label="On this page">
-      <ol class="index two">
-        <li><a href="#e1"><span class="num">E1</span><span class="name">Your first component<span class="detail">Greeting, used three times</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#e2"><span class="num">E2</span><span class="name">JSX in practice<span class="detail">UserCard with initials</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#e3"><span class="num">E3</span><span class="name">Passing and using props<span class="detail">ProfileCard</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#e4"><span class="num">E4</span><span class="name">props.children<span class="detail">A wrapper Card</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#e5"><span class="num">E5</span><span class="name">Rendering lists with map()<span class="detail">StudentList with keys</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#e6"><span class="num">E6</span><span class="name">Conditional rendering<span class="detail">Alert and Dashboard</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#challenge"><span class="num">CC</span><span class="name">Code challenge<span class="detail">ProductCard with both bonuses</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-        <li><a href="#homework"><span class="num">HW</span><span class="name">Homework<span class="detail">Portfolio Gallery (Create React App)</span></span><span class="go" aria-hidden="true">↓</span></a></li>
-      </ol>
-    </nav>
 
-    <h2 class="section-title">Class examples</h2>
+    <h2 class="section-title">Homework</h2>
+    <div>
+      <article class="card">
+        <h3>Portfolio Gallery</h3>
+        <p>The Friday homework: a React project made with <code>npx create-react-app portfolio-gallery</code>. A <code>ProjectList</code> renders 7 <code>ProjectCard</code>s (title, description, tech stack, GitHub link, demo link) for my real projects, and a <code>FilterBar</code> filters them by technology. It has 3 passing tests.</p>
+        <div class="actions"><a class="btn alt" href="gallery/index.html">Live app</a><a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/tree/main/week11/portfolio-gallery" target="_blank" rel="noopener noreferrer">Source code<span class="visually-hidden"> (opens in a new tab)</span></a></div>
+      </article>
+    </div>
+
+    <h2 class="section-title">Friday practice: React</h2>
+    <p>Every code example from the lecture, running live. The code next to each output is the exact code that renders it.</p>
 
     <article class="card fix" id="e1">
       <header class="fix-head">
@@ -331,7 +323,7 @@ ReactDOM.createRoot(document.getElementById('demo-conditional-rendering')).rende
       </div>
     </article>
 
-    <h2 class="section-title" id="challenge">Code challenge</h2>
+    <h2 class="section-title">Code challenge</h2>
     <article class="card fix">
       <header class="fix-head">
         <span class="fix-num">CC</span>
@@ -405,47 +397,6 @@ ReactDOM.createRoot(document.getElementById('demo-product-card')).render(&lt;App
       </div>
     </article>
 
-    <h2 class="section-title" id="homework">Homework</h2>
-    <article class="card fix">
-      <header class="fix-head">
-        <span class="fix-num">HW</span>
-        <h3>Portfolio Gallery component</h3>
-        <span class="fix-audit">create-react-app</span>
-      </header>
-      <p>I created the project with <code>npx create-react-app portfolio-gallery</code> and built the four components from the slide. The gallery shows 7 of my real projects from this course. The FilterBar's buttons come from the projects' tech stacks, each with a count, and a card with no live site says “No live demo” instead of showing a dead link.</p>
-      <div class="ex-grid">
-        <div>
-          <p class="ex-label">Component tree</p>
-          <ul class="tree">
-            <li>App <span>holds the selected filter</span>
-              <ul>
-                <li>FilterBar <span>All · HTML · CSS · JavaScript · Node · React</span></li>
-                <li>ProjectList <span>maps the projects, key = id</span>
-                  <ul>
-                    <li>ProjectCard × 7 <span>title, description, tech, GitHub, demo</span></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p class="ex-label">Checklist</p>
-          <ul>
-            <li>React project made with Create React App</li>
-            <li><code>ProjectCard</code>: title, description, tech stack, GitHub link, demo link</li>
-            <li><code>ProjectList</code> renders 7 ProjectCards (3+ needed)</li>
-            <li><code>FilterBar</code> filters the cards by technology</li>
-            <li>3 passing tests (<code>npm test</code>)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="actions">
-        <a class="btn" href="gallery/index.html">Open the gallery</a>
-        <a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/tree/main/week11/portfolio-gallery" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-      </div>
-      <p class="muted">The source is in <code>week11/portfolio-gallery/</code>; the <code>npm run build</code> output is copied to <code>week11/gallery/</code> so GitHub Pages can serve it.</p>
-    </article>
   </main>
 
   <script src="vendor/react.production.min.js" defer></script>
