@@ -1,0 +1,37 @@
+/* Task 11-A: my own CSS, no frameworks. The colour tokens are repeated here so the app also works on its own. */
+:root { --paper: #f6f1e7; --surface: #fffdf8; --ink: #1c1b19; --muted: #5c564a; --accent: #b8400f; --marker: #f6d04d; --font-display: 'Bricolage Grotesque', system-ui, sans-serif; --font-mono: ui-monospace, Consolas, monospace; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, sans-serif; line-height: 1.5; }
+#root { width: min(100% - 40px, 760px); margin: 0 auto; padding: 44px 0 24px; }
+@media (max-width: 480px) { #root { width: min(100% - 32px, 760px); padding-top: 28px; } }
+
+h1 { margin: 0 0 28px; font: 700 clamp(2.2rem, 6vw, 3.2rem)/1.1 var(--font-display); letter-spacing: -0.03em; }
+
+.profile-card {
+  margin-bottom: 20px;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--surface);
+  box-shadow: 5px 5px 0 var(--ink);
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.profile-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--accent);
+  background: #fffaf0;
+}
+
+.card-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px;
+  padding: 16px 22px;
+  border-bottom: 2px solid var(--ink);
+  background: var(--marker);
+}
+.student-name { margin: 0; font: 700 1.4rem/1.2 var(--font-display); letter-spacing: -0.02em; }
+.student-id { padding: 3px 10px; border: 1.5px solid var(--ink); border-radius: 6px; background: var(--surface); font: 600 0.85rem/1.4 var(--font-mono); }
+
+.card-body { padding: 16px 22px 8px; }
+.card-body p { margin: 0 0 10px; }
+.card-body strong { display: inline-block; min-width: 4.5em; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) { .profile-card { transition: none; } .profile-card:hover { transform: none; } }
