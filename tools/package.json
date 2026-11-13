@@ -2,6 +2,12 @@
   "name": "web-programming-tools",
   "private": true,
   "type": "module",
-  "scripts": { "build": "node build-css.mjs" },
-  "devDependencies": { "lightningcss": "^1.27.0" }
+  "scripts": {
+    "build": "node build-css.mjs",
+    "build:week11": "node build-week11.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "lightningcss": "^1.27.0"
+  }
 }

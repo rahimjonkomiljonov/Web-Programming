@@ -1,0 +1,1 @@
+const students=[{id:1,name:"Lee Jungwoo",grade:"A"},{id:2,name:"Park Sohee",grade:"B+"},{id:3,name:"Kim Minho",grade:"A-"}];function StudentList(){return React.createElement("ul",null,students.map(e=>React.createElement("li",{key:e.id},e.name," -- ",e.grade)))}ReactDOM.createRoot(document.getElementById("demo-student-list")).render(React.createElement(StudentList,null));

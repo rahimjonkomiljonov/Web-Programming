@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f1e7">
+  <title>Week 11 | React Components & Props</title>
+  <link rel="preload" href="../assets/fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/IBMPlexSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/frame.css">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    /* ---------- layout of each exercise ---------- */
+    .ex-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: start; margin-top: 16px; }
+    .ex-grid pre { margin: 0; max-height: 560px; font-size: 0.8rem; }
+    .ex-label { margin: 0 0 6px; color: var(--muted); font: 600 0.75rem/1.2 var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; }
+    @media (max-width: 820px) { .ex-grid { grid-template-columns: minmax(0, 1fr); } }
+
+    /* the live output of a React component */
+    .demo { min-height: 90px; padding: 18px; border: 1.5px dashed var(--ink); border-radius: var(--radius); background: #fff; color: #1f2933; font-family: var(--font-body); }
+    .demo:empty::before { content: "Loading React…"; color: var(--muted); font: 500 0.85rem var(--font-mono); }
+    .demo h1, .demo h2, .demo h3 { font-family: var(--font-body); letter-spacing: 0; }
+    .demo p { margin: 0 0 8px; }
+    .demo button { min-height: 40px; padding: 0 16px; font-size: 0.95rem; }
+
+    /* E1 Hello, World */
+    #demo-hello-world h1 { margin: 0 0 4px; font-family: Georgia, "Times New Roman", serif; font-size: 1.7rem; }
+
+    /* E2 UserCard */
+    .demo .user-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+    .demo .user-cards .card { margin: 0; padding: 16px 10px; border: 1px solid #e3e6ea; border-radius: 8px; background: #fff; box-shadow: none; text-align: center; }
+    .demo .avatar { display: grid; place-items: center; width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 50%; background: #2d5b8a; color: #fff; font-weight: 600; }
+    .demo .user-cards h2 { margin-bottom: 4px; font-size: 1rem; }
+    .demo .user-cards p { margin: 0; font-size: 0.85rem; }
+    .demo .user-cards .role { color: #1f2933; }
+    .demo .user-cards p:last-child { color: #5f6b76; }
+
+    /* E3 ProfileCard */
+    .demo .profile { padding: 16px 20px; border: 1px solid #e3e6ea; border-radius: 10px; }
+    .demo .profile h2 { margin-bottom: 6px; font-size: 1.3rem; }
+    .demo .profile p { margin: 0; color: #4b5560; }
+
+    /* E4 Card with children */
+    .demo .card { margin: 0; padding: 0; border: 1px solid #e3e6ea; border-radius: 10px; background: #fff; box-shadow: none; }
+    .demo .card-title { margin: 0; padding: 14px 20px; border-bottom: 1px solid #e3e6ea; font-size: 1.1rem; }
+    .demo .card-body { padding: 14px 20px 18px; }
+    .demo .card-body p { color: #4b5560; }
+    .demo .card-body button { margin-top: 6px; background: #2d5b8a; }
+
+    /* E5 StudentList */
+    #demo-student-list ul { margin: 0; padding: 0; border: 1px solid #e3e6ea; border-radius: 8px; list-style: none; }
+    #demo-student-list li { margin: 0; padding: 10px 16px; border-bottom: 1px solid #e3e6ea; }
+    #demo-student-list li:last-child { border-bottom: 0; }
+
+    /* E6 Alert + Dashboard */
+    .demo .alert { margin-bottom: 10px; padding: 10px 14px; border-radius: 6px; }
+    .demo .alert-error { background: #fdecea; color: #a1281e; }
+    .demo .alert-success { background: #e6f4ea; color: #19613a; }
+    .demo .dashboard { padding: 16px 20px; border: 1px solid #e3e6ea; border-radius: 10px; }
+
+    /* Challenge: ProductCard */
+    .demo .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .demo .product-card { padding: 16px 18px; border-radius: 10px; background: #eef3f8; }
+    .demo .product-card h3 { margin-bottom: 8px; font-size: 1.1rem; }
+    .demo .product-card .price { font-weight: 700; font-size: 1.05rem; }
+    .demo .stars { color: #c47f00; letter-spacing: 1px; }
+    .demo .rating p { margin: 2px 0 8px; color: #5f6b76; font-size: 0.85rem; }
+    .demo .stock { margin: 0; font-weight: 700; font-size: 0.9rem; }
+    .demo .stock.in { color: #1e6b37; }
+    .demo .stock.out { color: #a1281e; }
+    .demo .sold-out { background: #f3f1ee; }
+
+    /* homework */
+    .tree { margin: 0; padding: 0; list-style: none; font: 500 0.9rem/1.5 var(--font-mono); }
+    .tree ul { margin: 4px 0 4px 10px; padding-left: 16px; border-left: 1.5px dashed var(--line); list-style: none; }
+    .tree li { margin: 4px 0; }
+    .tree li::marker { content: none; }
+    .tree span { color: var(--muted); font-family: var(--font-body); font-weight: 400; }
+  </style>
+</head>
+<body class="pw-980">
+  <header class="site-header">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">WP</span>Web Programming</a>
+    <div class="crumbs" role="navigation" aria-label="Breadcrumb">
+      <span aria-current="page">Week 11</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="page-head">
+      <p class="eyebrow">K0126002 · Week 11 · React components and props</p>
+      <h1>React Components &amp; <span class="marker">Props</span></h1>
+      <p class="intro">Every code example from the Friday lecture, the ProductCard code challenge and the Portfolio Gallery homework. Each exercise runs live on this page: the code next to the output is the exact code that renders it.</p>
+    </div>
+
+    <nav aria-label="On this page">
+      <ol class="index two">
+        <li><a href="#e1"><span class="num">E1</span><span class="name">Your first component<span class="detail">Greeting, used three times</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#e2"><span class="num">E2</span><span class="name">JSX in practice<span class="detail">UserCard with initials</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#e3"><span class="num">E3</span><span class="name">Passing and using props<span class="detail">ProfileCard</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#e4"><span class="num">E4</span><span class="name">props.children<span class="detail">A wrapper Card</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#e5"><span class="num">E5</span><span class="name">Rendering lists with map()<span class="detail">StudentList with keys</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#e6"><span class="num">E6</span><span class="name">Conditional rendering<span class="detail">Alert and Dashboard</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#challenge"><span class="num">CC</span><span class="name">Code challenge<span class="detail">ProductCard with both bonuses</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+        <li><a href="#homework"><span class="num">HW</span><span class="name">Homework<span class="detail">Portfolio Gallery (Create React App)</span></span><span class="go" aria-hidden="true">↓</span></a></li>
+      </ol>
+    </nav>
+
+    <h2 class="section-title">Class examples</h2>
+
+    <article class="card fix" id="e1">
+      <header class="fix-head">
+        <span class="fix-num">E1</span>
+        <h3>Your first component</h3>
+        <span class="fix-audit">Part 1 · components</span>
+      </header>
+      <p>A component is a function that returns JSX. Its name starts with a capital letter, so <code>&lt;Greeting /&gt;</code> calls the function instead of making an HTML tag. <code>App</code> reuses it three times.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:hello-world --><pre><code>// Simplest possible React component
+function Greeting() {
+  return &lt;h1&gt;Hello, World!&lt;/h1&gt;;
+}
+
+// Using it in another component
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Greeting /&gt;
+      &lt;Greeting /&gt;
+      &lt;Greeting /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-hello-world')).render(&lt;App /&gt;);</code></pre><!-- /code:hello-world --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-hello-world"></div></div>
+      </div>
+    </article>
+
+    <article class="card fix" id="e2">
+      <header class="fix-head">
+        <span class="fix-num">E2</span>
+        <h3>JSX in practice: UserCard</h3>
+        <span class="fix-audit">Part 1 · JSX</span>
+      </header>
+      <p>JSX uses <code>className</code> instead of <code>class</code>, and anything in <code>{ }</code> is JavaScript: the initials are worked out from the name, and the year comes from <code>new Date()</code>.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:user-cards --><pre><code>function UserCard({ name, role }) {
+  const initials = name.split(' ').map(w =&gt; w[0]).join('');
+
+  return (
+    &lt;div className="card"&gt;
+      &lt;div className="avatar"&gt;{initials}&lt;/div&gt;
+      &lt;h2&gt;{name}&lt;/h2&gt;
+      &lt;p className="role"&gt;{role}&lt;/p&gt;
+      &lt;p&gt;Joined: {new Date().getFullYear()}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;div className="user-cards"&gt;
+      &lt;UserCard name="Ada Lovelace" role="Mathematician" /&gt;
+      &lt;UserCard name="Grace Hopper" role="Rear Admiral" /&gt;
+      &lt;UserCard name="Alan Turing" role="Computer Scientist" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-user-cards')).render(&lt;App /&gt;);</code></pre><!-- /code:user-cards --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-user-cards"></div></div>
+      </div>
+    </article>
+
+    <article class="card fix" id="e3">
+      <header class="fix-head">
+        <span class="fix-num">E3</span>
+        <h3>Passing and using props: ProfileCard</h3>
+        <span class="fix-audit">Part 2 · props</span>
+      </header>
+      <p>The parent passes a string, a number and a boolean. Strings go in quotes; other values go in <code>{ }</code>. The child destructures them, shows <code>[Verified]</code> only when <code>isVerified</code> is true, and formats <code>1240</code> as <code>1,240</code>.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:profile-card --><pre><code>// Parent passes props
+function App() {
+  return (
+    &lt;ProfileCard
+      name="Kim Minho"
+      role="Frontend Developer"
+      followers={1240}
+      isVerified={true}
+    /&gt;
+  );
+}
+
+// Child receives and uses them
+function ProfileCard({ name, role, followers, isVerified }) {
+  return (
+    &lt;div className="profile"&gt;
+      &lt;h2&gt;{name} {isVerified &amp;&amp; '[Verified]'}&lt;/h2&gt;
+      &lt;p&gt;{role}&lt;/p&gt;
+      &lt;p&gt;{followers.toLocaleString()} followers&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-profile-card')).render(&lt;App /&gt;);</code></pre><!-- /code:profile-card --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-profile-card"></div></div>
+      </div>
+    </article>
+
+    <article class="card fix" id="e4">
+      <header class="fix-head">
+        <span class="fix-num">E4</span>
+        <h3>props.children: a wrapper Card</h3>
+        <span class="fix-audit">Part 3 · composition</span>
+      </header>
+      <p>Whatever goes between <code>&lt;Card&gt;</code> and <code>&lt;/Card&gt;</code> arrives as the <code>children</code> prop, so one Card can wrap any content.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:card --><pre><code>// A reusable card wrapper
+function Card({ title, children }) {
+  return (
+    &lt;div className="card"&gt;
+      &lt;h3 className="card-title"&gt;{title}&lt;/h3&gt;
+      &lt;div className="card-body"&gt;
+        {children}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Use it to wrap anything
+function App() {
+  return (
+    &lt;Card title="Student Info"&gt;
+      &lt;p&gt;Name: Park Jisoo&lt;/p&gt;
+      &lt;p&gt;Major: Computer Engineering&lt;/p&gt;
+      &lt;button&gt;Edit Profile&lt;/button&gt;
+    &lt;/Card&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-card')).render(&lt;App /&gt;);</code></pre><!-- /code:card --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-card"></div></div>
+      </div>
+    </article>
+
+    <article class="card fix" id="e5">
+      <header class="fix-head">
+        <span class="fix-num">E5</span>
+        <h3>Rendering lists with map()</h3>
+        <span class="fix-audit">Part 4 · lists</span>
+      </header>
+      <p><code>map()</code> turns each student object into an <code>&lt;li&gt;</code>. Each item gets <code>key={student.id}</code>: a unique, stable id, not the array index.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:student-list --><pre><code>const students = [
+  { id: 1, name: 'Lee Jungwoo', grade: 'A'  },
+  { id: 2, name: 'Park Sohee',  grade: 'B+' },
+  { id: 3, name: 'Kim Minho',   grade: 'A-' },
+];
+
+function StudentList() {
+  return (
+    &lt;ul&gt;
+      {students.map(student =&gt; (
+        &lt;li key={student.id}&gt;
+          {student.name} -- {student.grade}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-student-list')).render(&lt;StudentList /&gt;);</code></pre><!-- /code:student-list --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-student-list"></div></div>
+      </div>
+    </article>
+
+    <article class="card fix" id="e6">
+      <header class="fix-head">
+        <span class="fix-num">E6</span>
+        <h3>Conditional rendering: Alert and Dashboard</h3>
+        <span class="fix-audit">Part 4 · conditions</span>
+      </header>
+      <p>All three ways from the slide: <code>Alert</code> returns <code>null</code> when there is no message, uses a ternary for the label, and <code>Dashboard</code> uses <code>&amp;&amp;</code>. I made the <strong>Log in</strong> button work, so you can see both branches; that needs one <code>useState</code> call, which is Monday's topic.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:conditional-rendering --><pre><code>function Alert({ type, message }) {
+  if (!message) return null; // render nothing
+
+  return (
+    &lt;div className={"alert alert-" + type}&gt;
+      {type === 'error' ? 'ERROR:' : 'OK:'} {message}
+    &lt;/div&gt;
+  );
+}
+
+function Dashboard({ user, onLogin, onLogout }) {
+  return (
+    &lt;div className="dashboard"&gt;
+      {user &amp;&amp; &lt;p&gt;Welcome, {user.name}!&lt;/p&gt;}
+      {!user &amp;&amp; &lt;p&gt;Please log in.&lt;/p&gt;}
+      {user
+        ? &lt;button className="secondary" onClick={onLogout}&gt;Log out&lt;/button&gt;
+        : &lt;button onClick={onLogin}&gt;Log in&lt;/button&gt;}
+    &lt;/div&gt;
+  );
+}
+
+// The button needs a value that changes, so App keeps `user` in state
+// (useState is Monday's topic; here it only flips user between null and an object).
+function App() {
+  const [user, setUser] = React.useState(null);
+
+  return (
+    &lt;div&gt;
+      &lt;Alert
+        type={user ? 'success' : 'error'}
+        message={user ? 'Logged in as ' + user.name + '.' : 'You are not logged in.'}
+      /&gt;
+      &lt;Alert type="error" message="" /&gt; {/* empty message: renders nothing */}
+      &lt;Dashboard
+        user={user}
+        onLogin={() =&gt; setUser({ name: 'Jisoo' })}
+        onLogout={() =&gt; setUser(null)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-conditional-rendering')).render(&lt;App /&gt;);</code></pre><!-- /code:conditional-rendering --></div>
+        <div><p class="ex-label">Output (try the button)</p><div class="demo" id="demo-conditional-rendering"></div></div>
+      </div>
+    </article>
+
+    <h2 class="section-title" id="challenge">Code challenge</h2>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">CC</span>
+        <h3>Build a ProductCard</h3>
+        <span class="fix-audit">both bonuses done</span>
+      </header>
+      <p><strong>Task:</strong> a <code>ProductCard</code> that takes <code>name</code> (string), <code>price</code> (number, KRW), <code>rating</code> (0 to 5) and <code>inStock</code> (boolean). <strong>Bonus 1:</strong> show the rating as “4.5 / 5 stars”. <strong>Bonus 2:</strong> show “Out of Stock” when <code>!inStock</code>.</p>
+      <p>Following the best-practices slide, each part has one job: <code>PriceTag</code> formats the price, <code>StarRating</code> draws the stars (and keeps the rating between 0 and 5), <code>StockBadge</code> picks the label. Defaults cover missing props; the third card is <code>&lt;ProductCard /&gt;</code> with no props at all.</p>
+      <div class="ex-grid">
+        <div><p class="ex-label">Code</p><!-- code:product-card --><pre><code>// Code challenge: a ProductCard built from small, single-purpose parts.
+
+// 89000 -&gt; "89,000원"
+function PriceTag({ price }) {
+  return &lt;p className="price"&gt;{price.toLocaleString('ko-KR')}원&lt;/p&gt;;
+}
+
+// 4.5 -&gt; "★★★★½" plus the bonus text "4.5 / 5 stars"
+function StarRating({ rating }) {
+  const value = Math.min(5, Math.max(0, rating)); // keep it between 0 and 5
+  const full = Math.floor(value);
+  const half = value - full &gt;= 0.5;
+  const empty = 5 - full - (half ? 1 : 0);
+
+  return (
+    &lt;div className="rating"&gt;
+      &lt;span className="stars" aria-hidden="true"&gt;
+        {'★'.repeat(full)}{half &amp;&amp; '½'}{'☆'.repeat(empty)}
+      &lt;/span&gt;
+      &lt;p&gt;{value} / 5 stars&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Bonus 2: "Out of Stock" when !inStock
+function StockBadge({ inStock }) {
+  return inStock
+    ? &lt;p className="stock in"&gt;In Stock&lt;/p&gt;
+    : &lt;p className="stock out"&gt;Out of Stock&lt;/p&gt;;
+}
+
+function ProductCard({ name = 'Unnamed product', price = 0, rating = 0, inStock = false }) {
+  return (
+    &lt;article className={'product-card' + (inStock ? '' : ' sold-out')}&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;PriceTag price={price} /&gt;
+      &lt;StarRating rating={rating} /&gt;
+      &lt;StockBadge inStock={inStock} /&gt;
+    &lt;/article&gt;
+  );
+}
+
+function App() {
+  return (
+    &lt;div className="products"&gt;
+      {/* the expected usage from the slide */}
+      &lt;ProductCard
+        name="Wireless Earbuds"
+        price={89000}
+        rating={4.5}
+        inStock={true}
+      /&gt;
+      &lt;ProductCard name="Mechanical Keyboard" price={129000} rating={4} inStock={false} /&gt;
+      {/* no props at all: every default kicks in */}
+      &lt;ProductCard /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('demo-product-card')).render(&lt;App /&gt;);</code></pre><!-- /code:product-card --></div>
+        <div><p class="ex-label">Output</p><div class="demo" id="demo-product-card"></div></div>
+      </div>
+    </article>
+
+    <h2 class="section-title" id="homework">Homework</h2>
+    <article class="card fix">
+      <header class="fix-head">
+        <span class="fix-num">HW</span>
+        <h3>Portfolio Gallery component</h3>
+        <span class="fix-audit">create-react-app</span>
+      </header>
+      <p>I created the project with <code>npx create-react-app portfolio-gallery</code> and built the four components from the slide. The gallery shows 7 of my real projects from this course. The FilterBar's buttons come from the projects' tech stacks, each with a count, and a card with no live site says “No live demo” instead of showing a dead link.</p>
+      <div class="ex-grid">
+        <div>
+          <p class="ex-label">Component tree</p>
+          <ul class="tree">
+            <li>App <span>holds the selected filter</span>
+              <ul>
+                <li>FilterBar <span>All · HTML · CSS · JavaScript · Node · React</span></li>
+                <li>ProjectList <span>maps the projects, key = id</span>
+                  <ul>
+                    <li>ProjectCard × 7 <span>title, description, tech, GitHub, demo</span></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="ex-label">Checklist</p>
+          <ul>
+            <li>React project made with Create React App</li>
+            <li><code>ProjectCard</code>: title, description, tech stack, GitHub link, demo link</li>
+            <li><code>ProjectList</code> renders 7 ProjectCards (3+ needed)</li>
+            <li><code>FilterBar</code> filters the cards by technology</li>
+            <li>3 passing tests (<code>npm test</code>)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn" href="gallery/index.html">Open the gallery</a>
+        <a class="btn alt" href="https://github.com/rahimjonkomiljonov/Web-Programming/tree/main/week11/portfolio-gallery" target="_blank" rel="noopener noreferrer">Source on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+      <p class="muted">The source is in <code>week11/portfolio-gallery/</code>; the <code>npm run build</code> output is copied to <code>week11/gallery/</code> so GitHub Pages can serve it.</p>
+    </article>
+  </main>
+
+  <script src="vendor/react.production.min.js" defer></script>
+  <script src="vendor/react-dom.production.min.js" defer></script>
+  <script src="js/hello-world.js" defer></script>
+  <script src="js/user-cards.js" defer></script>
+  <script src="js/profile-card.js" defer></script>
+  <script src="js/card.js" defer></script>
+  <script src="js/student-list.js" defer></script>
+  <script src="js/conditional-rendering.js" defer></script>
+  <script src="js/product-card.js" defer></script>
+  <script src="../site-nav.js" defer></script>
+</body>
+</html>

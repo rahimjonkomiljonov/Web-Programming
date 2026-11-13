@@ -1,0 +1,1 @@
+function Greeting(){return React.createElement("h1",null,"Hello, World!")}function App(){return React.createElement("div",null,React.createElement(Greeting,null),React.createElement(Greeting,null),React.createElement(Greeting,null))}ReactDOM.createRoot(document.getElementById("demo-hello-world")).render(React.createElement(App,null));
